@@ -11,16 +11,21 @@
 [![Plotly](https://img.shields.io/badge/Plotly.js-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)](https://plotly.com/javascript/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
-[![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)](https://numpy.org/)
 
 [![Responsive](https://img.shields.io/badge/Responsive-Yes-success?style=for-the-badge)](https://developer.mozilla.org/fr/docs/Learn/CSS/CSS_layout/Responsive_Design)
 [![Accessibility](https://img.shields.io/badge/Accessibility-WCAG%202.1%20AA-blue?style=for-the-badge)](https://www.w3.org/WAI/WCAG21/quickref/)
 [![Dark Mode](https://img.shields.io/badge/Dark%20Mode-Supported-000000?style=for-the-badge)](https://darkreader.org/)
 [![i18n](https://img.shields.io/badge/i18n-FR%20%7C%20EN%20%7C%20AR%20%7C%20HE-orange?style=for-the-badge)](https://cloud.google.com/translate)
+
+[![GitHub Stars](https://img.shields.io/github/stars/gunout/sacre?style=for-the-badge&logo=github&color=yellow)](https://github.com/gunout/sacre/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/gunout/sacre?style=for-the-badge&logo=github&color=blue)](https://github.com/gunout/sacre/network)
+[![GitHub Issues](https://img.shields.io/github/issues/gunout/sacre?style=for-the-badge&logo=github&color=red)](https://github.com/gunout/sacre/issues)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/gunout/sacre?style=for-the-badge&logo=github&color=green)](https://github.com/gunout/sacre/commits)
+[![GitHub Repo Size](https://img.shields.io/github/repo-size/gunout/sacre?style=for-the-badge&logo=github&color=purple)](https://github.com/gunout/sacre)
+
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=for-the-badge)](CONTRIBUTING.md)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)](https://github.com/)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)](https://github.com/gunout/sacre/graphs/commit-activity)
 
 </div>
 
@@ -34,7 +39,7 @@
 
 **Étude interdisciplinaire : Histoire, Linguistique, Théologie comparée, Géographie culturelle**
 
-[🌐 Demo Live](https://example.com) · [📚 Documentation](docs/) · [🐛 Signaler un bug](https://github.com/) · [💡 Proposer une amélioration](https://github.com/)
+[🌐 Demo Live](https://gunout.github.io/sacre) · [📚 Documentation](docs/) · [🐛 Signaler un bug](https://github.com/gunout/sacre/issues) · [💡 Proposer une amélioration](https://github.com/gunout/sacre/issues)
 
 </div>
 
@@ -82,11 +87,8 @@ Le projet combine :
 
 ## ✨ Fonctionnalités
 
-<table>
-<tr>
-<td width="50%">
-
 ### 📊 Analyse comparative
+
 - ✅ 6 livres sacrés analysés
 - ✅ Métriques textuelles (versets, mots, chapitres)
 - ✅ Analyse thématique radar
@@ -94,10 +96,8 @@ Le projet combine :
 - ✅ Périodes de rédaction
 - ✅ Filtres dynamiques (période, thème, nombre)
 
-</td>
-<td width="50%">
-
 ### 🔤 Analyse linguistique
+
 - ✅ 6 langues anciennes
 - ✅ Type/Token Ratio (TTR)
 - ✅ Complexité morphologique
@@ -105,85 +105,59 @@ Le projet combine :
 - ✅ Familles linguistiques
 - ✅ Évolution diachronique
 
-</td>
-</tr>
-<tr>
-<td>
-
 ### ⏳ Analyse historique
+
 - ✅ Chronologie interactive
 - ✅ 18 événements clés
 - ✅ Manuscrits anciens
 - ✅ Contextes culturels
 - ✅ Heatmap de corrélation
 
-</td>
-<td>
-
 ### 🌍 Analyse géographique
+
 - ✅ Carte mondiale interactive
 - ✅ Centres culturels
 - ✅ Routes commerciales
 - ✅ Aires d'influence
 - ✅ Détails par tradition
 
-</td>
-</tr>
-<tr>
-<td>
-
 ### 📈 Statistiques avancées
+
 - ✅ Matrice de corrélation (Pearson)
 - ✅ Régression linéaire (R²)
 - ✅ ACP simplifiée
 - ✅ Distribution normalisée
 
-</td>
-<td>
-
 ### 🎯 Interactivité
+
 - ✅ Recherche full-text
 - ✅ Quiz interactif (8 questions)
 - ✅ Comparateur de versets côte à côte
 - ✅ Citations croisées
 - ✅ Glossaire tooltips
 
-</td>
-</tr>
-<tr>
-<td>
-
 ### 🎨 Design & UX
+
 - ✅ Palette Bleu-Blanc-Rouge 🇫🇷
 - ✅ Mode sombre/clair
 - ✅ Animations fluides
 - ✅ Responsive (mobile, tablette, desktop)
 - ✅ Scroll-to-top
 
-</td>
-<td>
-
 ### 💾 Export & Partage
+
 - ✅ Export HTML
 - ✅ Export CSV
 - ✅ Export PDF
 - ✅ Impression optimisée
 - ✅ URL partageable (bientôt)
 
-</td>
-</tr>
-<tr>
-<td colspan="2">
-
 ### 🌐 Internationalisation & Accessibilité
+
 - ✅ **4 langues** : Français 🇫🇷 · Anglais 🇬🇧 · Arabe 🇸🇦 · Hébreu 🇮🇱
 - ✅ **Support RTL** automatique (arabe, hébreu)
 - ✅ **WCAG 2.1 AA** — navigation clavier, aria-labels, contrastes
 - ✅ **prefers-reduced-motion** respecté
-
-</td>
-</tr>
-</table>
 
 ---
 
@@ -194,19 +168,23 @@ Le projet combine :
 Aucune installation requise ! Il suffit de cloner et d'ouvrir :
 
 ```bash
-git clone https://github.com/username/sacred-books-dashboard.git
-cd sacred-books-dashboard
+git clone https://github.com/gunout/sacre.git
+cd sacre
 open index.html
 ```
+
+Ou testez directement en ligne : **[https://gunout.github.io/sacre](https://gunout.github.io/sacre)**
 
 ### 🐍 Option 2 : Version Streamlit (Python)
 
 ```bash
-git clone https://github.com/username/sacred-books-dashboard.git
-cd sacred-books-dashboard
+git clone https://github.com/gunout/sacre.git
+cd sacre
 
 python -m venv venv
-source venv/bin/activate
+source venv/bin/activate   # Linux/macOS
+venv\Scripts\activate      # Windows
+
 pip install -r requirements.txt
 streamlit run dashboard_livres_sacres_scientifique_avance.py
 ```
@@ -214,8 +192,8 @@ streamlit run dashboard_livres_sacres_scientifique_avance.py
 ### 🐳 Option 3 : Docker
 
 ```bash
-docker build -t sacred-books-dashboard .
-docker run -p 8501:8501 sacred-books-dashboard
+docker build -t sacre-dashboard .
+docker run -p 8501:8501 sacre-dashboard
 ```
 
 ### 📋 Prérequis
@@ -281,20 +259,20 @@ docker run -p 8501:8501 sacred-books-dashboard
 
 </div>
 
+> 💡 Pour ajouter vos propres captures, placez-les dans `docs/screenshots/` et référencez-les ici.
+
 ---
 
 ## 🏗️ Architecture
 
 ```
-sacred-books-dashboard/
-├── 📄 index.html
-├── 🐍 dashboard_streamlit.py
+sacre/
+├── 📄 index.html                                  # Dashboard HTML/CSS/JS autonome
+├── 🐍 dashboard_livres_sacres_scientifique_avance.py
 ├── 📋 requirements.txt
 ├── 🐳 Dockerfile
 ├── 📜 LICENSE
 ├── 📖 README.md
-├── 🤝 CONTRIBUTING.md
-├── 📝 CHANGELOG.md
 ├── 🎨 assets/
 │   ├── css/styles.css
 │   ├── js/charts.js
@@ -308,20 +286,11 @@ sacred-books-dashboard/
 │   ├── linguistic.json
 │   ├── geographical.json
 │   └── verses.json
-├── 📚 docs/
-│   ├── API.md
-│   ├── METHODOLOGY.md
-│   ├── DATA_SOURCES.md
-│   └── DEPLOYMENT.md
-├── 🧪 tests/
-│   ├── test_charts.js
-│   ├── test_search.js
-│   └── test_i18n.js
-└── 🌐 locales/
-    ├── fr.json
-    ├── en.json
-    ├── ar.json
-    └── he.json
+└── 📚 docs/
+    ├── API.md
+    ├── METHODOLOGY.md
+    ├── DATA_SOURCES.md
+    └── DEPLOYMENT.md
 ```
 
 ---
@@ -365,8 +334,6 @@ sacred-books-dashboard/
 
 ### 🎨 Palette de couleurs — Bleu Blanc Rouge
 
-<div align="center">
-
 | Couleur | Hex | Usage |
 |---|---|---|
 | 🔵 Bleu France | `#0055A4` | Primaire, Torah |
@@ -378,8 +345,6 @@ sacred-books-dashboard/
 | 🟠 Orange Tripitaka | `#FF8C00` | Tripitaka |
 | 🟣 Pourpre Avesta | `#8B008B` | Avesta |
 | 🟡 Or sacré | `#D4AF37` | Synthèse |
-
-</div>
 
 ### 🔤 Typographies
 
@@ -437,7 +402,7 @@ Ce projet respecte les **WCAG 2.1 niveau AA** :
 ### Tester l'accessibilité
 
 ```bash
-lighthouse https://example.com --view
+lighthouse https://gunout.github.io/sacre --view
 ```
 
 ---
@@ -473,27 +438,6 @@ lighthouse https://example.com --view
 
 ---
 
-## 🧪 Tests
-
-### Lancer les tests
-
-```bash
-npm test
-npm run test:integration
-npm run test:e2e
-npm run test:coverage
-```
-
-### Couverture
-
-| Type | Couverture |
-|---|---|
-| Unitaires | 92% |
-| Intégration | 85% |
-| E2E | 78% |
-
----
-
 ## 🛠️ Stack technique
 
 ### Frontend
@@ -525,30 +469,17 @@ npm run test:coverage
 
 ---
 
-## 📚 Documentation
-
-| Document | Description |
-|---|---|
-| [📖 API](docs/API.md) | Documentation de l'API JavaScript |
-| [🔬 Méthodologie](docs/METHODOLOGY.md) | Méthodes scientifiques utilisées |
-| [📊 Sources](docs/DATA_SOURCES.md) | Sources des données |
-| [🚀 Déploiement](docs/DEPLOYMENT.md) | Guide de déploiement |
-| [🤝 Contribution](CONTRIBUTING.md) | Guide de contribution |
-| [📝 Changelog](CHANGELOG.md) | Historique des versions |
-
----
-
 ## 🤝 Contribution
 
 Les contributions sont **les bienvenues** ! 🎉
 
 ### Comment contribuer
 
-1. 🍴 **Fork** le projet
+1. 🍴 **Fork** le projet : [github.com/gunout/sacre/fork](https://github.com/gunout/sacre/fork)
 2. 🌿 Créer une branche (`git checkout -b feature/ma-fonctionnalite`)
 3. ✏️ **Commit** vos changements (`git commit -m 'feat: ajoute ma fonctionnalité'`)
 4. 📤 **Push** vers la branche (`git push origin feature/ma-fonctionnalite`)
-5. 🔃 Ouvrir une **Pull Request**
+5. 🔃 Ouvrir une **Pull Request** sur [github.com/gunout/sacre/pulls](https://github.com/gunout/sacre/pulls)
 
 ### Convention de commit
 
@@ -576,6 +507,7 @@ chore:    Tâches diverses
 ## 🗺️ Roadmap
 
 ### ✅ Version 1.0 (Actuelle)
+
 - [x] Dashboard HTML/CSS/JS
 - [x] 6 livres sacrés
 - [x] Palette Bleu-Blanc-Rouge
@@ -585,12 +517,14 @@ chore:    Tâches diverses
 - [x] Quiz interactif
 
 ### 🚧 Version 1.1 (En cours)
+
 - [ ] URL partageable avec état
 - [ ] Comparateur de traductions
 - [ ] Galerie de manuscrits
 - [ ] Timeline animée play/pause
 
 ### 🔮 Version 2.0 (Prévue)
+
 - [ ] Chatbot IA intégré
 - [ ] Carte 3D (globe rotatif)
 - [ ] Analyse phonétique
@@ -599,6 +533,7 @@ chore:    Tâches diverses
 - [ ] Mode présentation
 
 ### 🌟 Version 3.0 (Idée)
+
 - [ ] Application mobile native
 - [ ] Réalité augmentée (manuscrits)
 - [ ] Analyse par IA (NLP avancé)
@@ -613,7 +548,7 @@ Ce projet est sous licence **MIT** — voir le fichier [LICENSE](LICENSE) pour p
 ```
 MIT License
 
-Copyright (c) 2025
+Copyright (c) 2025 gunout
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -635,12 +570,14 @@ Ce projet est **strictement éducatif et académique**. Il traite des textes sac
 ## 🙏 Remerciements
 
 ### Technologies
+
 - [Plotly.js](https://plotly.com/javascript/) — Graphiques interactifs
 - [jsPDF](https://github.com/parallax/jsPDF) — Génération PDF
 - [html2canvas](https://html2canvas.hertzen.com/) — Capture DOM
 - [Streamlit](https://streamlit.io/) — Framework Python
 
 ### Sources académiques
+
 - **Biblia Hebraica Stuttgartensia** (BHS)
 - **Novum Testamentum Graece** (NA28)
 - **Manuscrits de la Mer Morte** (Qumran)
@@ -649,6 +586,7 @@ Ce projet est **strictement éducatif et académique**. Il traite des textes sac
 - **Académie des Sciences de Perse** (Avesta)
 
 ### Communauté
+
 Merci à **tous les contributeurs** et à la communauté open-source pour son soutien. 💙🤍❤️
 
 ---
@@ -659,12 +597,10 @@ Merci à **tous les contributeurs** et à la communauté open-source pour son so
 
 ### 👤 Auteur
 
-**[Votre Nom]**
+**gunout**
 
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/)
-[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:email@example.com)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/gunout)
+[![Repo](https://img.shields.io/badge/Repo-sacre-0055A4?style=for-the-badge&logo=github&logoColor=white)](https://github.com/gunout/sacre)
 
 </div>
 
@@ -673,6 +609,8 @@ Merci à **tous les contributeurs** et à la communauté open-source pour son so
 <div align="center">
 
 ### ⭐ Si ce projet vous plaît, n'oubliez pas de lui donner une étoile ! ⭐
+
+[![Star this repo](https://img.shields.io/badge/⭐%20Star%20this%20repo-gunout%2Fsacre-yellow?style=for-the-badge&logo=github)](https://github.com/gunout/sacre/stargazers)
 
 **Fait avec ❤️ et rigueur scientifique**
 
