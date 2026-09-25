@@ -5,18 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🔍 Dashboard Ultime — Livres Sacrés | Bleu Blanc Rouge</title>
 
-<!-- Plotly.js -->
 <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
-<!-- jsPDF + html2canvas pour export PDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<!-- Typographies -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-/* ==================== PALETTE & VARIABLES ==================== */
 :root {
     --bleu-france: #0055A4;
     --bleu-fonce: #003366;
@@ -42,7 +38,6 @@
     --shadow-lg: 0 8px 24px rgba(0, 85, 164, 0.18);
 }
 
-/* ==================== MODE SOMBRE ==================== */
 body.dark-mode {
     --bleu-france: #4A90D9;
     --bleu-fonce: #6BA9E8;
@@ -61,9 +56,7 @@ body.dark-mode {
     --or-sacre: #E5C158;
 }
 
-/* ==================== RESET & BASE ==================== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -81,38 +74,15 @@ body.dark-mode {
 }
 
 h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
-
 .container { max-width: 1400px; margin: 0 auto; }
 
-/* ==================== BANDEAU TRICOLORE ==================== */
-.tricolore-banner {
-    display: flex;
-    height: 6px;
-    border-radius: 3px;
-    overflow: hidden;
-    margin-bottom: 1.5rem;
-    box-shadow: var(--shadow-sm);
-}
+.tricolore-banner { display: flex; height: 6px; border-radius: 3px; overflow: hidden; margin-bottom: 1.5rem; box-shadow: var(--shadow-sm); }
 .tricolore-banner .bleu { flex: 1; background: var(--bleu-france); }
 .tricolore-banner .blanc { flex: 1; background: var(--blanc); }
 .tricolore-banner .rouge { flex: 1; background: var(--rouge-france); }
 
-/* ==================== TOP BAR ==================== */
-.top-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.top-bar-controls {
-    display: flex;
-    gap: 0.75rem;
-    align-items: center;
-    flex-wrap: wrap;
-}
+.top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; gap: 1rem; flex-wrap: wrap; }
+.top-bar-controls { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
 
 .lang-selector, .theme-toggle {
     background: var(--blanc);
@@ -124,6 +94,7 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
     cursor: pointer;
     transition: all 0.25s;
     font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
 }
 
 .lang-selector:hover, .theme-toggle:hover {
@@ -132,7 +103,6 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
     box-shadow: var(--shadow-sm);
 }
 
-/* ==================== EN-TÊTE ==================== */
 .main-header {
     font-size: 3rem;
     text-align: center;
@@ -152,29 +122,10 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
     50% { background-position: 100% 50%; }
 }
 
-.subtitle {
-    text-align: center;
-    color: var(--texte-gris);
-    font-size: 1.15rem;
-    margin-bottom: 1rem;
-    font-weight: 500;
-}
+.subtitle { text-align: center; color: var(--texte-gris); font-size: 1.15rem; margin-bottom: 1rem; font-weight: 500; }
+.header-underline { height: 4px; background: linear-gradient(90deg, var(--bleu-france) 0%, var(--blanc) 50%, var(--rouge-france) 100%); border-radius: 2px; margin: 0 auto 2rem auto; width: 60%; box-shadow: var(--shadow-sm); }
 
-.header-underline {
-    height: 4px;
-    background: linear-gradient(90deg, var(--bleu-france) 0%, var(--blanc) 50%, var(--rouge-france) 100%);
-    border-radius: 2px;
-    margin: 0 auto 2rem auto;
-    width: 60%;
-    box-shadow: var(--shadow-sm);
-}
-
-/* ==================== BARRE DE RECHERCHE ==================== */
-.search-bar {
-    max-width: 600px;
-    margin: 0 auto 2rem auto;
-    position: relative;
-}
+.search-bar { max-width: 600px; margin: 0 auto 2rem auto; position: relative; }
 
 .search-input {
     width: 100%;
@@ -194,15 +145,7 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
     box-shadow: 0 0 0 4px rgba(0, 85, 164, 0.15);
 }
 
-.search-icon {
-    position: absolute;
-    right: 1.25rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.2rem;
-    color: var(--bleu-france);
-    pointer-events: none;
-}
+.search-icon { position: absolute; right: 1.25rem; top: 50%; transform: translateY(-50%); font-size: 1.2rem; color: var(--bleu-france); pointer-events: none; }
 
 .search-results {
     position: absolute;
@@ -220,45 +163,14 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
 }
 
 .search-results.active { display: block; }
-
-.search-result-item {
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--gris-clair);
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
+.search-result-item { padding: 1rem 1.5rem; border-bottom: 1px solid var(--gris-clair); cursor: pointer; transition: background 0.2s; }
 .search-result-item:hover { background: var(--bleu-tres-clair); }
-
 .search-result-item:last-child { border-bottom: none; }
+.search-result-livre { font-weight: 700; color: var(--bleu-france); font-size: 0.85rem; text-transform: uppercase; }
+.search-result-texte { color: var(--texte-gris); font-size: 0.95rem; margin-top: 0.25rem; }
+.search-result-ref { font-size: 0.8rem; color: var(--rouge-france); font-weight: 600; margin-top: 0.25rem; }
 
-.search-result-livre {
-    font-weight: 700;
-    color: var(--bleu-france);
-    font-size: 0.85rem;
-    text-transform: uppercase;
-}
-
-.search-result-texte {
-    color: var(--texte-gris);
-    font-size: 0.95rem;
-    margin-top: 0.25rem;
-}
-
-.search-result-ref {
-    font-size: 0.8rem;
-    color: var(--rouge-france);
-    font-weight: 600;
-    margin-top: 0.25rem;
-}
-
-/* ==================== MÉTRIQUES ==================== */
-.metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
+.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
 
 .academic-card {
     background: var(--blanc);
@@ -274,9 +186,7 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
     animation: cardAppear 0.5s ease forwards;
 }
 
-@keyframes cardAppear {
-    to { opacity: 1; transform: translateY(0); }
-}
+@keyframes cardAppear { to { opacity: 1; transform: translateY(0); } }
 
 .academic-card::before {
     content: '';
@@ -286,85 +196,21 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
     background: linear-gradient(90deg, var(--bleu-france), var(--blanc), var(--rouge-france));
 }
 
-.academic-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-}
-
-.academic-card::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-    transition: left 0.6s;
-    pointer-events: none;
-}
-
-.academic-card:hover::after { left: 100%; }
-
+.academic-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 .card-torah { border-left: 5px solid var(--bleu-france); }
 .card-bible { border-left: 5px solid var(--rouge-france); }
 .card-coran { border-left: 5px solid var(--bleu-clair); }
 .card-vedas { border-left: 5px solid var(--vert-vedas); }
 .card-tripitaka { border-left: 5px solid var(--orange-bouddhisme); }
 .card-avesta { border-left: 5px solid var(--pourpre-zoroastre); }
-.card-tao { border-left: 5px solid var(--indigo-taoisme); }
 
-.card-title {
-    font-size: 1rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 0.5rem;
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-}
+.card-title { font-size: 1rem; font-weight: 700; text-align: center; margin-bottom: 0.5rem; letter-spacing: 1px; display: flex; align-items: center; justify-content: center; gap: 0.4rem; }
+.metric-value { font-size: 2.3rem; font-weight: 800; text-align: center; margin: 0.5rem 0; font-variant-numeric: tabular-nums; font-family: 'Inter', sans-serif; }
+.metric-label { text-align: center; color: var(--texte-gris); font-weight: 500; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+.card-details { font-size: 0.8rem; margin-top: 0.75rem; color: var(--texte-gris); text-align: center; border-top: 1px dashed var(--gris-clair); padding-top: 0.5rem; }
 
-.metric-value {
-    font-size: 2.3rem;
-    font-weight: 800;
-    text-align: center;
-    margin: 0.5rem 0;
-    font-variant-numeric: tabular-nums;
-    font-family: 'Inter', sans-serif;
-}
-
-.metric-label {
-    text-align: center;
-    color: var(--texte-gris);
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-}
-
-.card-details {
-    font-size: 0.8rem;
-    margin-top: 0.75rem;
-    color: var(--texte-gris);
-    text-align: center;
-    border-top: 1px dashed var(--gris-clair);
-    padding-top: 0.5rem;
-}
-
-/* ==================== ONGLETS ==================== */
 .tabs-container { margin-top: 1rem; }
-
-.tabs-header {
-    display: flex;
-    gap: 4px;
-    border-bottom: 3px solid var(--bleu-france);
-    flex-wrap: wrap;
-    padding-bottom: 0;
-    position: sticky;
-    top: 0;
-    background: var(--blanc);
-    z-index: 50;
-    padding-top: 0.5rem;
-}
+.tabs-header { display: flex; gap: 4px; border-bottom: 3px solid var(--bleu-france); flex-wrap: wrap; padding-bottom: 0; position: sticky; top: 0; background: var(--blanc); z-index: 50; padding-top: 0.5rem; }
 
 .tab-btn {
     height: 52px;
@@ -383,11 +229,7 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
     font-family: 'Inter', sans-serif;
 }
 
-.tab-btn:hover {
-    background-color: var(--bleu-tres-clair);
-    border-color: var(--bleu-clair);
-    transform: translateY(-2px);
-}
+.tab-btn:hover { background-color: var(--bleu-tres-clair); border-color: var(--bleu-clair); transform: translateY(-2px); }
 
 .tab-btn.active {
     background: linear-gradient(180deg, var(--bleu-france) 0%, var(--bleu-fonce) 100%);
@@ -396,23 +238,13 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
     box-shadow: 0 -4px 12px rgba(0, 85, 164, 0.3);
 }
 
-.tab-btn.active::after {
-    content: '';
-    position: absolute;
-    bottom: -3px; left: 0; right: 0;
-    height: 3px;
-    background: var(--rouge-france);
-}
+.tab-btn.active::after { content: ''; position: absolute; bottom: -3px; left: 0; right: 0; height: 3px; background: var(--rouge-france); }
 
 .tab-content { display: none; padding: 2rem 0; }
 .tab-content.active { display: block; animation: fadeIn 0.35s ease; }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ==================== SECTIONS ==================== */
 .section-title {
     color: var(--bleu-france);
     padding: 0.75rem 0 0.75rem 1rem;
@@ -424,37 +256,15 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
     border-radius: 0 8px 8px 0;
 }
 
-.subsection-title {
-    color: var(--bleu-fonce);
-    padding-left: 1rem;
-    margin: 1.5rem 0 1rem 0;
-    font-size: 1.2rem;
-    font-weight: 700;
-    border-left: 4px solid var(--bleu-france);
-}
+.subsection-title { color: var(--bleu-fonce); padding-left: 1rem; margin: 1.5rem 0 1rem 0; font-size: 1.2rem; font-weight: 700; border-left: 4px solid var(--bleu-france); }
 
-/* ==================== GRILLES ==================== */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
 
-.chart-container {
-    background: var(--blanc);
-    border-radius: 12px;
-    padding: 1.25rem;
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--gris-clair);
-    transition: box-shadow 0.25s;
-}
-
+.chart-container { background: var(--blanc); border-radius: 12px; padding: 1.25rem; box-shadow: var(--shadow-sm); border: 1px solid var(--gris-clair); transition: box-shadow 0.25s; min-height: 400px; }
 .chart-container:hover { box-shadow: var(--shadow-md); }
 
-/* ==================== ONGLETS INTERNES ==================== */
-.inner-tabs {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-}
+.inner-tabs { display: flex; gap: 4px; margin-bottom: 1rem; flex-wrap: wrap; }
 
 .inner-tab-btn {
     padding: 0.5rem 1rem;
@@ -469,28 +279,12 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
     font-family: 'Inter', sans-serif;
 }
 
-.inner-tab-btn:hover {
-    background-color: var(--bleu-tres-clair);
-    border-color: var(--bleu-clair);
-}
-
-.inner-tab-btn.active {
-    background-color: var(--rouge-france);
-    color: white;
-    border-color: var(--rouge-france);
-    box-shadow: 0 3px 8px rgba(239, 65, 53, 0.3);
-}
-
+.inner-tab-btn:hover { background-color: var(--bleu-tres-clair); border-color: var(--bleu-clair); }
+.inner-tab-btn.active { background-color: var(--rouge-france); color: white; border-color: var(--rouge-france); box-shadow: 0 3px 8px rgba(239, 65, 53, 0.3); }
 .inner-tab-content { display: none; }
 .inner-tab-content.active { display: block; animation: fadeIn 0.3s; }
 
-/* ==================== MÉTRIQUES DÉTAILLÉES ==================== */
-.metrics-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 0.75rem;
-    margin: 1rem 0;
-}
+.metrics-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
 
 .metric-box {
     background: linear-gradient(180deg, var(--blanc) 0%, var(--bleu-tres-clair) 100%);
@@ -502,46 +296,15 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
     transition: transform 0.2s;
 }
 
-.metric-box:hover {
-    transform: translateY(-3px);
-    border-top-color: var(--rouge-france);
-}
+.metric-box:hover { transform: translateY(-3px); border-top-color: var(--rouge-france); }
+.metric-box .value { font-size: 1.5rem; font-weight: 800; color: var(--bleu-france); font-variant-numeric: tabular-nums; }
+.metric-box .label { font-size: 0.75rem; color: var(--texte-gris); margin-top: 0.25rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
 
-.metric-box .value {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--bleu-france);
-    font-variant-numeric: tabular-nums;
-}
-
-.metric-box .label {
-    font-size: 0.75rem;
-    color: var(--texte-gris);
-    margin-top: 0.25rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-/* ==================== INFO BLOCS ==================== */
-.info-block {
-    background: var(--gris-tres-clair);
-    padding: 1rem 1.25rem;
-    border-radius: 10px;
-    margin-top: 1rem;
-    border-left: 4px solid var(--bleu-clair);
-}
-
-.info-block .info-title {
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: var(--bleu-fonce);
-}
-
+.info-block { background: var(--gris-tres-clair); padding: 1rem 1.25rem; border-radius: 10px; margin-top: 1rem; border-left: 4px solid var(--bleu-clair); }
+.info-block .info-title { font-weight: 700; margin-bottom: 0.5rem; color: var(--bleu-fonce); }
 .info-block ul { margin-left: 1.25rem; color: var(--texte-gris); }
 .info-block li { margin-bottom: 0.25rem; }
 
-/* ==================== BOUTONS ==================== */
 .btn {
     background: linear-gradient(135deg, var(--bleu-france) 0%, var(--bleu-fonce) 100%);
     color: white;
@@ -559,22 +322,11 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
     font-family: 'Inter', sans-serif;
 }
 
-.btn::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--rouge-france);
-    transform: scaleX(0);
-    transition: transform 0.3s;
-}
-
+.btn::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--rouge-france); transform: scaleX(0); transition: transform 0.3s; }
 .btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
 .btn:hover::after { transform: scaleX(1); }
-
 .btn-container { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0; }
 
-/* ==================== FILTRES ==================== */
 .filters-panel {
     background: var(--blanc);
     border: 2px solid var(--gris-clair);
@@ -588,36 +340,11 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
 }
 
 .filter-group { display: flex; flex-direction: column; gap: 0.4rem; }
-
-.filter-group label {
-    font-weight: 700;
-    font-size: 0.85rem;
-    color: var(--bleu-fonce);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.filter-group select,
-.filter-group input[type="range"] {
-    padding: 0.5rem;
-    border: 2px solid var(--gris-clair);
-    border-radius: 8px;
-    background: var(--blanc);
-    color: var(--texte-noir);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-}
-
+.filter-group label { font-weight: 700; font-size: 0.85rem; color: var(--bleu-fonce); text-transform: uppercase; letter-spacing: 0.5px; }
+.filter-group select, .filter-group input[type="range"] { padding: 0.5rem; border: 2px solid var(--gris-clair); border-radius: 8px; background: var(--blanc); color: var(--texte-noir); font-family: 'Inter', sans-serif; font-size: 0.9rem; }
 .filter-group select:focus { outline: none; border-color: var(--bleu-france); }
+.filter-value { font-weight: 700; color: var(--rouge-france); font-size: 0.9rem; text-align: center; }
 
-.filter-value {
-    font-weight: 700;
-    color: var(--rouge-france);
-    font-size: 0.9rem;
-    text-align: center;
-}
-
-/* ==================== QUIZ ==================== */
 .quiz-card {
     background: linear-gradient(135deg, var(--bleu-tres-clair) 0%, var(--rouge-tres-clair) 100%);
     border: 2px solid var(--bleu-france);
@@ -641,12 +368,7 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
     border-left: 4px solid var(--rouge-france);
 }
 
-.quiz-options {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-}
+.quiz-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; }
 
 .quiz-option {
     padding: 0.9rem 1.2rem;
@@ -661,171 +383,32 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
     font-size: 0.95rem;
 }
 
-.quiz-option:hover {
-    border-color: var(--bleu-france);
-    background: var(--bleu-tres-clair);
-    transform: translateY(-2px);
-}
+.quiz-option:hover { border-color: var(--bleu-france); background: var(--bleu-tres-clair); transform: translateY(-2px); }
+.quiz-option.correct { background: #D4EDDA; border-color: #28A745; color: #155724; }
+.quiz-option.wrong { background: #F8D7DA; border-color: #DC3545; color: #721C24; }
+.quiz-feedback { font-weight: 700; font-size: 1.1rem; margin-top: 1rem; min-height: 1.5rem; }
+.quiz-score { font-size: 0.95rem; color: var(--texte-gris); margin-top: 0.5rem; font-weight: 600; }
 
-.quiz-option.correct {
-    background: #D4EDDA;
-    border-color: #28A745;
-    color: #155724;
-}
-
-.quiz-option.wrong {
-    background: #F8D7DA;
-    border-color: #DC3545;
-    color: #721C24;
-}
-
-.quiz-feedback {
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin-top: 1rem;
-    min-height: 1.5rem;
-}
-
-.quiz-score {
-    font-size: 0.95rem;
-    color: var(--texte-gris);
-    margin-top: 0.5rem;
-    font-weight: 600;
-}
-
-/* ==================== COMPARATEUR VERSETS ==================== */
-.verse-comparator {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
-    margin: 1.5rem 0;
-}
-
-.verse-col {
-    background: var(--blanc);
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: var(--shadow-sm);
-    border-top: 5px solid var(--bleu-france);
-    transition: transform 0.25s;
-}
-
+.verse-comparator { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.verse-col { background: var(--blanc); border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow-sm); border-top: 5px solid var(--bleu-france); transition: transform 0.25s; }
 .verse-col:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-
 .verse-col.torah { border-top-color: var(--bleu-france); }
 .verse-col.bible { border-top-color: var(--rouge-france); }
 .verse-col.coran { border-top-color: var(--bleu-clair); }
+.verse-col h4 { color: var(--bleu-fonce); text-align: center; margin-bottom: 1rem; font-size: 1.1rem; }
+.verse-original { font-size: 1.15rem; text-align: right; direction: rtl; color: var(--bleu-france); font-weight: 600; padding: 0.75rem; background: var(--bleu-tres-clair); border-radius: 8px; margin-bottom: 0.75rem; font-family: 'Cormorant Garamond', serif; }
+.verse-translation { font-size: 0.95rem; color: var(--texte-gris); font-style: italic; padding: 0.75rem; background: var(--gris-tres-clair); border-radius: 8px; border-left: 3px solid var(--rouge-france); }
 
-.verse-col h4 {
-    color: var(--bleu-fonce);
-    text-align: center;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-}
-
-.verse-original {
-    font-size: 1.15rem;
-    text-align: right;
-    direction: rtl;
-    color: var(--bleu-france);
-    font-weight: 600;
-    padding: 0.75rem;
-    background: var(--bleu-tres-clair);
-    border-radius: 8px;
-    margin-bottom: 0.75rem;
-    font-family: 'Cormorant Garamond', serif;
-}
-
-.verse-translation {
-    font-size: 0.95rem;
-    color: var(--texte-gris);
-    font-style: italic;
-    padding: 0.75rem;
-    background: var(--gris-tres-clair);
-    border-radius: 8px;
-    border-left: 3px solid var(--rouge-france);
-}
-
-/* ==================== GLOSSAIRE / TOOLTIPS ==================== */
-.term {
-    border-bottom: 2px dotted var(--bleu-france);
-    cursor: help;
-    position: relative;
-    font-weight: 600;
-    color: var(--bleu-france);
-}
-
-.term:hover::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--bleu-fonce);
-    color: white;
-    padding: 0.5rem 0.75rem;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    white-space: nowrap;
-    z-index: 1000;
-    font-weight: 400;
-    box-shadow: var(--shadow-md);
-    margin-bottom: 6px;
-}
-
-/* ==================== CITATIONS CROISÉES ==================== */
-.cross-ref-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--blanc);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    margin: 1.5rem 0;
-}
-
-.cross-ref-table th {
-    background: linear-gradient(135deg, var(--bleu-france), var(--bleu-fonce));
-    color: white;
-    padding: 1rem;
-    text-align: left;
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.cross-ref-table td {
-    padding: 0.85rem 1rem;
-    border-bottom: 1px solid var(--gris-clair);
-    color: var(--texte-gris);
-    font-size: 0.9rem;
-}
-
+.cross-ref-table { width: 100%; border-collapse: collapse; background: var(--blanc); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-sm); margin: 1.5rem 0; }
+.cross-ref-table th { background: linear-gradient(135deg, var(--bleu-france), var(--bleu-fonce)); color: white; padding: 1rem; text-align: left; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.cross-ref-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--gris-clair); color: var(--texte-gris); font-size: 0.9rem; }
 .cross-ref-table tr:hover { background: var(--bleu-tres-clair); }
 .cross-ref-table tr:last-child td { border-bottom: none; }
 
-/* ==================== LÉGENDE CARTE ==================== */
-.legend-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
+.legend-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem; }
 .legend-item { text-align: center; }
+.legend-dot { display: inline-block; width: 22px; height: 22px; border-radius: 50%; margin-bottom: 0.5rem; box-shadow: var(--shadow-sm); border: 2px solid var(--blanc); }
 
-.legend-dot {
-    display: inline-block;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    margin-bottom: 0.5rem;
-    box-shadow: var(--shadow-sm);
-    border: 2px solid var(--blanc);
-}
-
-/* ==================== TOAST NOTIFICATIONS ==================== */
 .toast {
     position: fixed;
     bottom: 2rem;
@@ -845,7 +428,6 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
 
 .toast.show { transform: translateY(0); }
 
-/* ==================== SCROLL TOP ==================== */
 .scroll-top {
     position: fixed;
     bottom: 2rem;
@@ -868,29 +450,16 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
 .scroll-top.visible { opacity: 1; pointer-events: auto; }
 .scroll-top:hover { transform: translateY(-4px) scale(1.05); }
 
-/* ==================== PROGRESS TRICOLORE ==================== */
-.progress-tricolore {
-    display: flex;
-    height: 8px;
-    border-radius: 4px;
-    overflow: hidden;
-    margin: 1rem 0;
-    box-shadow: var(--shadow-sm);
-}
+.progress-tricolore { display: flex; height: 8px; border-radius: 4px; overflow: hidden; margin: 1rem 0; box-shadow: var(--shadow-sm); }
 .progress-tricolore .bleu { background: var(--bleu-france); flex: 1; }
 .progress-tricolore .blanc { background: var(--gris-clair); flex: 1; }
 .progress-tricolore .rouge { background: var(--rouge-france); flex: 1; }
 
-/* ==================== SCROLLBAR ==================== */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: var(--gris-tres-clair); }
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--bleu-france), var(--rouge-france));
-    border-radius: 5px;
-}
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--bleu-france), var(--rouge-france)); border-radius: 5px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--bleu-fonce); }
 
-/* ==================== RESPONSIVE ==================== */
 @media (max-width: 1024px) {
     .grid-2 { grid-template-columns: 1fr; }
     .grid-3 { grid-template-columns: 1fr 1fr; }
@@ -905,7 +474,6 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
     .scroll-top { bottom: 1rem; left: 1rem; }
 }
 
-/* ==================== PRINT ==================== */
 @media print {
     .tabs-header, .btn-container, .top-bar, .search-bar, .scroll-top, .toast { display: none !important; }
     .tab-content { display: block !important; page-break-after: always; }
@@ -914,7 +482,6 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
     body { background: white; }
 }
 
-/* ==================== ACCESSIBILITÉ ==================== */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -926,17 +493,28 @@ button:focus-visible, select:focus-visible, input:focus-visible {
     outline: 3px solid var(--rouge-france);
     outline-offset: 2px;
 }
+
+/* Placeholder pour graphiques vides */
+.empty-chart-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 400px;
+    color: var(--texte-gris);
+    text-align: center;
+    padding: 2rem;
+}
+
+.empty-chart-message .icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.5; }
 </style>
 </head>
 <body>
 <div class="container">
 
-    <!-- BANDEAU TRICOLORE -->
-    <div class="tricolore-banner">
-        <div class="bleu"></div><div class="blanc"></div><div class="rouge"></div>
-    </div>
+    <div class="tricolore-banner"><div class="bleu"></div><div class="blanc"></div><div class="rouge"></div></div>
 
-    <!-- TOP BAR -->
     <div class="top-bar">
         <div></div>
         <div class="top-bar-controls">
@@ -946,18 +524,14 @@ button:focus-visible, select:focus-visible, input:focus-visible {
                 <option value="ar">🇸🇦 العربية</option>
                 <option value="he">🇮🇱 עברית</option>
             </select>
-            <button class="theme-toggle" onclick="toggleDarkMode()" id="themeBtn">
-                🌙 Mode sombre
-            </button>
+            <button class="theme-toggle" onclick="toggleDarkMode()" id="themeBtn">🌙 Mode sombre</button>
         </div>
     </div>
 
-    <!-- EN-TÊTE -->
     <h1 class="main-header" id="mainTitle">🔍 ANALYSE SCIENTIFIQUE AVANCÉE DES LIVRES SACRÉS</h1>
     <p class="subtitle" id="mainSubtitle">Étude interdisciplinaire : Histoire, Linguistique, Théologie comparée, Géographie culturelle</p>
     <div class="header-underline"></div>
 
-    <!-- BARRE DE RECHERCHE -->
     <div class="search-bar">
         <input type="text" class="search-input" id="searchInput"
                placeholder="🔍 Rechercher un verset, un thème, un manuscrit..."
@@ -967,10 +541,8 @@ button:focus-visible, select:focus-visible, input:focus-visible {
         <div class="search-results" id="searchResults"></div>
     </div>
 
-    <!-- MÉTRIQUES -->
     <div class="metrics-grid" id="metricsGrid"></div>
 
-    <!-- ONGLETS PRINCIPAUX -->
     <div class="tabs-container">
         <div class="tabs-header">
             <button class="tab-btn active" data-tab="tab1">📊 Analyse Comparée</button>
@@ -982,17 +554,15 @@ button:focus-visible, select:focus-visible, input:focus-visible {
             <button class="tab-btn" data-tab="tab7">💾 Export & Méthodo</button>
         </div>
 
-        <!-- ==================== TAB 1 : ANALYSE COMPARÉE ==================== -->
+        <!-- TAB 1 -->
         <div class="tab-content active" id="tab1">
             <h3 class="section-title">📊 ANALYSE COMPARATIVE MULTIDIMENSIONNELLE</h3>
             <div class="progress-tricolore"><div class="bleu"></div><div class="blanc"></div><div class="rouge"></div></div>
 
-            <!-- FILTRES -->
             <div class="filters-panel">
                 <div class="filter-group">
                     <label>Période historique</label>
-                    <input type="range" id="periodFilter" min="-2000" max="700" value="-2000" step="50"
-                           oninput="updatePeriodFilter(this.value)">
+                    <input type="range" id="periodFilter" min="-2000" max="700" value="-2000" step="50" oninput="updatePeriodFilter(this.value)">
                     <div class="filter-value" id="periodValue">-2000 → 700</div>
                 </div>
                 <div class="filter-group">
@@ -1009,48 +579,30 @@ button:focus-visible, select:focus-visible, input:focus-visible {
                 <div class="filter-group">
                     <label>Nombre de livres affichés</label>
                     <select id="bookCountFilter" onchange="updateBookCount(this.value)">
-                        <option value="all">Tous</option>
-                        <option value="3">3 principales (Torah, Bible, Coran)</option>
-                        <option value="6">6 (ajout Vedas, Tripitaka, Avesta)</option>
+                        <option value="all">Tous (6)</option>
+                        <option value="3">3 principales</option>
+                        <option value="6">6 (avec Vedas, Tripitaka, Avesta)</option>
                     </select>
                 </div>
             </div>
 
             <div class="grid-2">
-                <div class="chart-container">
-                    <h4 class="subsection-title">📈 Métriques Textuelles Comparées</h4>
-                    <div id="chartTextMetrics"></div>
-                </div>
-                <div class="chart-container">
-                    <h4 class="subsection-title">🎯 Analyse des Thèmes Fondamentaux</h4>
-                    <div id="chartRadar"></div>
-                </div>
+                <div class="chart-container"><h4 class="subsection-title">📈 Métriques Textuelles Comparées</h4><div id="chartTextMetrics"></div></div>
+                <div class="chart-container"><h4 class="subsection-title">🎯 Analyse des Thèmes Fondamentaux</h4><div id="chartRadar"></div></div>
             </div>
             <div class="grid-2">
-                <div class="chart-container">
-                    <h4 class="subsection-title">⚖️ Cohérence et Influence</h4>
-                    <div id="chartConsistency"></div>
-                </div>
-                <div class="chart-container">
-                    <h4 class="subsection-title">🕰️ Périodes de Rédaction</h4>
-                    <div id="chartTimeline"></div>
-                </div>
+                <div class="chart-container"><h4 class="subsection-title">⚖️ Cohérence et Influence</h4><div id="chartConsistency"></div></div>
+                <div class="chart-container"><h4 class="subsection-title">🕰️ Périodes de Rédaction</h4><div id="chartTimeline"></div></div>
             </div>
         </div>
 
-        <!-- ==================== TAB 2 : LINGUISTIQUE ==================== -->
+        <!-- TAB 2 -->
         <div class="tab-content" id="tab2">
             <h3 class="section-title">🔤 ANALYSE LINGUISTIQUE APPROFONDIE</h3>
             <div class="progress-tricolore"><div class="bleu"></div><div class="blanc"></div><div class="rouge"></div></div>
             <div class="grid-2">
-                <div class="chart-container">
-                    <h4 class="subsection-title">📐 Complexité Linguistique Comparée</h4>
-                    <div id="chartLinguistic"></div>
-                </div>
-                <div class="chart-container">
-                    <h4 class="subsection-title">🏺 Familles Linguistiques</h4>
-                    <div id="languageTabs"></div>
-                </div>
+                <div class="chart-container"><h4 class="subsection-title">📐 Complexité Linguistique Comparée</h4><div id="chartLinguistic"></div></div>
+                <div class="chart-container"><h4 class="subsection-title">🏺 Familles Linguistiques</h4><div id="languageTabs"></div></div>
             </div>
             <div class="chart-container" style="margin-top:1.5rem;">
                 <h4 class="subsection-title">📊 Indices de Richesse Lexicale (Type/Token Ratio)</h4>
@@ -1058,13 +610,11 @@ button:focus-visible, select:focus-visible, input:focus-visible {
             </div>
         </div>
 
-        <!-- ==================== TAB 3 : HISTOIRE ==================== -->
+        <!-- TAB 3 -->
         <div class="tab-content" id="tab3">
             <h3 class="section-title">⏳ ANALYSE HISTORIQUE ET CONTEXTUELLE</h3>
             <div class="progress-tricolore"><div class="bleu"></div><div class="blanc"></div><div class="rouge"></div></div>
-            <div class="chart-container">
-                <div id="chartHistoricalTimeline"></div>
-            </div>
+            <div class="chart-container"><div id="chartHistoricalTimeline"></div></div>
             <h4 class="subsection-title">🏛️ Contextes Historiques des Textes</h4>
             <div class="grid-3" id="historicalCards"></div>
             <div class="chart-container" style="margin-top:1.5rem;">
@@ -1073,46 +623,20 @@ button:focus-visible, select:focus-visible, input:focus-visible {
             </div>
         </div>
 
-        <!-- ==================== TAB 4 : GÉOGRAPHIE ==================== -->
+        <!-- TAB 4 -->
         <div class="tab-content" id="tab4">
             <h3 class="section-title">🌍 ANALYSE GÉOGRAPHIQUE ET CULTURELLE</h3>
             <div class="progress-tricolore"><div class="bleu"></div><div class="blanc"></div><div class="rouge"></div></div>
-            <div class="chart-container">
-                <div id="chartGeoMap"></div>
-            </div>
+            <div class="chart-container"><div id="chartGeoMap"></div></div>
             <div class="info-block" style="margin-top:1.5rem;">
                 <h4 style="text-align:center; color:var(--bleu-france);">📋 LÉGENDE DE LA CARTE</h4>
                 <div class="legend-grid">
-                    <div class="legend-item">
-                        <div class="legend-dot" style="background:var(--bleu-france);"></div>
-                        <div style="font-weight:700; color:var(--bleu-france);">TORAH</div>
-                        <div style="font-size:0.85rem; color:var(--texte-gris);">Mésopotamie-Égypte</div>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-dot" style="background:var(--rouge-france);"></div>
-                        <div style="font-weight:700; color:var(--rouge-france);">BIBLE</div>
-                        <div style="font-size:0.85rem; color:var(--texte-gris);">Méditerranée</div>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-dot" style="background:var(--bleu-clair);"></div>
-                        <div style="font-weight:700; color:var(--bleu-clair);">CORAN</div>
-                        <div style="font-size:0.85rem; color:var(--texte-gris);">Arabie</div>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-dot" style="background:var(--vert-vedas);"></div>
-                        <div style="font-weight:700; color:var(--vert-vedas);">VEDAS</div>
-                        <div style="font-size:0.85rem; color:var(--texte-gris);">Inde ancienne</div>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-dot" style="background:var(--orange-bouddhisme);"></div>
-                        <div style="font-weight:700; color:var(--orange-bouddhisme);">TRIPITAKA</div>
-                        <div style="font-size:0.85rem; color:var(--texte-gris);">Asie du Sud</div>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-dot" style="background:var(--pourpre-zoroastre);"></div>
-                        <div style="font-weight:700; color:var(--pourpre-zoroastre);">AVESTA</div>
-                        <div style="font-size:0.85rem; color:var(--texte-gris);">Perse</div>
-                    </div>
+                    <div class="legend-item"><div class="legend-dot" style="background:var(--bleu-france);"></div><div style="font-weight:700; color:var(--bleu-france);">TORAH</div><div style="font-size:0.85rem; color:var(--texte-gris);">Mésopotamie-Égypte</div></div>
+                    <div class="legend-item"><div class="legend-dot" style="background:var(--rouge-france);"></div><div style="font-weight:700; color:var(--rouge-france);">BIBLE</div><div style="font-size:0.85rem; color:var(--texte-gris);">Méditerranée</div></div>
+                    <div class="legend-item"><div class="legend-dot" style="background:var(--bleu-clair);"></div><div style="font-weight:700; color:var(--bleu-clair);">CORAN</div><div style="font-size:0.85rem; color:var(--texte-gris);">Arabie</div></div>
+                    <div class="legend-item"><div class="legend-dot" style="background:var(--vert-vedas);"></div><div style="font-weight:700; color:var(--vert-vedas);">VEDAS</div><div style="font-size:0.85rem; color:var(--texte-gris);">Inde ancienne</div></div>
+                    <div class="legend-item"><div class="legend-dot" style="background:var(--orange-bouddhisme);"></div><div style="font-weight:700; color:var(--orange-bouddhisme);">TRIPITAKA</div><div style="font-size:0.85rem; color:var(--texte-gris);">Asie du Sud</div></div>
+                    <div class="legend-item"><div class="legend-dot" style="background:var(--pourpre-zoroastre);"></div><div style="font-weight:700; color:var(--pourpre-zoroastre);">AVESTA</div><div style="font-size:0.85rem; color:var(--texte-gris);">Perse</div></div>
                 </div>
             </div>
             <h4 class="subsection-title">📊 Analyse Comparative des Influences Géographiques</h4>
@@ -1122,7 +646,7 @@ button:focus-visible, select:focus-visible, input:focus-visible {
             </div>
         </div>
 
-        <!-- ==================== TAB 5 : STATISTIQUES ==================== -->
+        <!-- TAB 5 : STATISTIQUES (CORRIGÉ) -->
         <div class="tab-content" id="tab5">
             <h3 class="section-title">📈 ANALYSE STATISTIQUE AVANCÉE</h3>
             <div class="progress-tricolore"><div class="bleu"></div><div class="blanc"></div><div class="rouge"></div></div>
@@ -1144,7 +668,7 @@ button:focus-visible, select:focus-visible, input:focus-visible {
             </div>
         </div>
 
-        <!-- ==================== TAB 6 : VERSETS & QUIZ ==================== -->
+        <!-- TAB 6 -->
         <div class="tab-content" id="tab6">
             <h3 class="section-title">🎯 VERSETS CLÉS & QUIZ INTERACTIF</h3>
             <div class="progress-tricolore"><div class="bleu"></div><div class="blanc"></div><div class="rouge"></div></div>
@@ -1171,44 +695,14 @@ button:focus-visible, select:focus-visible, input:focus-visible {
             <h4 class="subsection-title">🔗 Citations Croisées entre Traditions</h4>
             <table class="cross-ref-table">
                 <thead>
-                    <tr>
-                        <th>Thème</th>
-                        <th>📜 Torah</th>
-                        <th>✝️ Bible</th>
-                        <th>📗 Coran</th>
-                    </tr>
+                    <tr><th>Thème</th><th>📜 Torah</th><th>✝️ Bible</th><th>📗 Coran</th></tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><strong>Création</strong></td>
-                        <td>Genèse 1:1-31</td>
-                        <td>Jean 1:1-3</td>
-                        <td>Sourate 7:54</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Déluge</strong></td>
-                        <td>Genèse 6-9</td>
-                        <td>Matthieu 24:37-39</td>
-                        <td>Sourate 11:25-48</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Prophètes</strong></td>
-                        <td>Deutéronome 18:15</td>
-                        <td>Actes 3:22</td>
-                        <td>Sourate 33:40</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Jugement dernier</strong></td>
-                        <td>Daniel 12:2</td>
-                        <td>Apocalypse 20:11-15</td>
-                        <td>Sourate 99:1-8</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Amour du prochain</strong></td>
-                        <td>Lévitique 19:18</td>
-                        <td>Matthieu 22:39</td>
-                        <td>Sourate 4:36</td>
-                    </tr>
+                    <tr><td><strong>Création</strong></td><td>Genèse 1:1-31</td><td>Jean 1:1-3</td><td>Sourate 7:54</td></tr>
+                    <tr><td><strong>Déluge</strong></td><td>Genèse 6-9</td><td>Matthieu 24:37-39</td><td>Sourate 11:25-48</td></tr>
+                    <tr><td><strong>Prophètes</strong></td><td>Deutéronome 18:15</td><td>Actes 3:22</td><td>Sourate 33:40</td></tr>
+                    <tr><td><strong>Jugement dernier</strong></td><td>Daniel 12:2</td><td>Apocalypse 20:11-15</td><td>Sourate 99:1-8</td></tr>
+                    <tr><td><strong>Amour du prochain</strong></td><td>Lévitique 19:18</td><td>Matthieu 22:39</td><td>Sourate 4:36</td></tr>
                 </tbody>
             </table>
 
@@ -1224,7 +718,7 @@ button:focus-visible, select:focus-visible, input:focus-visible {
             </div>
         </div>
 
-        <!-- ==================== TAB 7 : EXPORT & MÉTHODO ==================== -->
+        <!-- TAB 7 -->
         <div class="tab-content" id="tab7">
             <h3 class="section-title">💾 EXPORTATION DU RAPPORT</h3>
             <div class="progress-tricolore"><div class="bleu"></div><div class="blanc"></div><div class="rouge"></div></div>
@@ -1241,7 +735,7 @@ button:focus-visible, select:focus-visible, input:focus-visible {
                     <div class="academic-card card-torah">
                         <h4 style="text-align:center; color:var(--bleu-france);">📐 MÉTHODES QUANTITATIVES</h4>
                         <ul style="color:var(--texte-gris); margin-left:1.5rem;">
-                            <li><span class="term" data-tooltip="Mesure de la diversité lexicale">Analyse stylométrique</span> (TTR)</li>
+                            <li>Analyse stylométrique (TTR)</li>
                             <li>Linguistique de corpus</li>
                             <li>Métriques de complexité morphologique</li>
                             <li>Analyse en composantes principales</li>
@@ -1264,7 +758,7 @@ button:focus-visible, select:focus-visible, input:focus-visible {
                         <h4 style="text-align:center; color:var(--bleu-clair);">📖 MÉTHODES QUALITATIVES</h4>
                         <ul style="color:var(--texte-gris); margin-left:1.5rem;">
                             <li>Analyse historico-critique</li>
-                            <li><span class="term" data-tooltip="Interprétation croisée des textes">Herméneutique comparative</span></li>
+                            <li>Herméneutique comparative</li>
                             <li>Étude de réception</li>
                             <li>Analyse narrative</li>
                             <li>Théologie comparée</li>
@@ -1286,10 +780,7 @@ button:focus-visible, select:focus-visible, input:focus-visible {
     </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
-
-<!-- SCROLL TOP -->
 <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Remonter">⬆️</button>
 
 <script>
@@ -1305,147 +796,33 @@ const PALETTE = {
 
 /* ==================== I18N ==================== */
 const i18n = {
-    fr: {
-        title: '🔍 ANALYSE SCIENTIFIQUE AVANCÉE DES LIVRES SACRÉS',
-        subtitle: 'Étude interdisciplinaire : Histoire, Linguistique, Théologie comparée, Géographie culturelle',
-        searchPlaceholder: '🔍 Rechercher un verset, un thème, un manuscrit...',
-        verses: 'Versets', chapters: 'Chapitres', uniqueWords: 'Mots uniques',
-        darkMode: '🌙 Mode sombre', lightMode: '☀️ Mode clair'
-    },
-    en: {
-        title: '🔍 ADVANCED SCIENTIFIC ANALYSIS OF SACRED BOOKS',
-        subtitle: 'Interdisciplinary study: History, Linguistics, Comparative Theology, Cultural Geography',
-        searchPlaceholder: '🔍 Search a verse, a theme, a manuscript...',
-        verses: 'Verses', chapters: 'Chapters', uniqueWords: 'Unique words',
-        darkMode: '🌙 Dark mode', lightMode: '☀️ Light mode'
-    },
-    ar: {
-        title: '🔍 تحليل علمي متقدم للكتب المقدسة',
-        subtitle: 'دراسة متعددة التخصصات: التاريخ، اللسانيات، اللاهوت المقارن، الجغرافيا الثقافية',
-        searchPlaceholder: '🔍 ابحث عن آية أو موضوع أو مخطوطة...',
-        verses: 'آيات', chapters: 'أصحاحات', uniqueWords: 'كلمات فريدة',
-        darkMode: '🌙 الوضع الداكن', lightMode: '☀️ الوضع الفاتح'
-    },
-    he: {
-        title: '🔍 ניתוח מדעי מתקדם של ספרי הקודש',
-        subtitle: 'מחקר בין-תחומי: היסטוריה, בלשנות, תיאולוגיה השוואתית, גיאוגרפיה תרבותית',
-        searchPlaceholder: '🔍 חפש פסוק, נושא או כתב יד...',
-        verses: 'פסוקים', chapters: 'פרקים', uniqueWords: 'מילים ייחודיות',
-        darkMode: '🌙 מצב כהה', lightMode: '☀️ מצב בהיר'
-    }
+    fr: { title: '🔍 ANALYSE SCIENTIFIQUE AVANCÉE DES LIVRES SACRÉS', subtitle: 'Étude interdisciplinaire : Histoire, Linguistique, Théologie comparée, Géographie culturelle', searchPlaceholder: '🔍 Rechercher un verset, un thème, un manuscrit...', darkMode: '🌙 Mode sombre', lightMode: '☀️ Mode clair' },
+    en: { title: '🔍 ADVANCED SCIENTIFIC ANALYSIS OF SACRED BOOKS', subtitle: 'Interdisciplinary study: History, Linguistics, Comparative Theology, Cultural Geography', searchPlaceholder: '🔍 Search a verse, a theme, a manuscript...', darkMode: '🌙 Dark mode', lightMode: '☀️ Light mode' },
+    ar: { title: '🔍 تحليل علمي متقدم للكتب المقدسة', subtitle: 'دراسة متعددة التخصصات: التاريخ، اللسانيات، اللاهوت المقارن، الجغرافيا الثقافية', searchPlaceholder: '🔍 ابحث عن آية أو موضوع أو مخطوطة...', darkMode: '🌙 الوضع الداكن', lightMode: '☀️ الوضع الفاتح' },
+    he: { title: '🔍 ניתוח מדעי מתקדם של ספרי הקודש', subtitle: 'מחקר בין-תחומי: היסטוריה, בלשנות, תיאולוגיה השוואתית, גיאוגרפיה תרבותית', searchPlaceholder: '🔍 חפש פסוק, נושא או כתב יד...', darkMode: '🌙 מצב כהה', lightMode: '☀️ מצב בהיר' }
 };
 
 let currentLang = 'fr';
 
-/* ==================== DONNÉES ENRICHIES (6 LIVRES) ==================== */
+/* ==================== DONNÉES ==================== */
 const metrics = {
-    TORAH: {
-        versets: 5845, mots_uniques: 7920, chapitres: 187,
-        complexite_linguistique: 8.8, influence_historique: 9.8, coherence_interne: 9.2,
-        type_token_ratio: 0.42, longueur_moyenne_verset: 13.5, densite_thematique: 8.7,
-        periode_redaction: 'XIII-VI siècle AEC', periode_couverture: 'c. 2000-1200 AEC',
-        langue_originale: 'Hébreu ancien',
-        contextes_historiques: ['Période patriarcale', 'Exode', 'Conquête', 'Monarchie unifiée'],
-        manuscrits_anciens: ['Manuscrits de la Mer Morte', "Codex d'Alep", 'Codex de Leningrad'],
-        region_origine: 'Levant/Canaan', color: PALETTE.bleuFrance, icon: '📜'
-    },
-    BIBLE: {
-        versets: 31102, mots_uniques: 15400, chapitres: 1189,
-        complexite_linguistique: 8.5, influence_historique: 9.2, coherence_interne: 8.7,
-        type_token_ratio: 0.38, longueur_moyenne_verset: 25.2, densite_thematique: 8.2,
-        periode_redaction: 'Ier siècle EC', periode_couverture: 'c. 6 AEC - 100 EC',
-        langue_originale: 'Grec koinè, Araméen',
-        contextes_historiques: ['Empire romain', 'Judaïsme du Second Temple', 'Diaspora juive'],
-        manuscrits_anciens: ['Codex Sinaiticus', 'Codex Vaticanus', 'Papyrus Bodmer'],
-        region_origine: 'Bassin méditerranéen', color: PALETTE.rougeFrance, icon: '✝️'
-    },
-    CORAN: {
-        versets: 6236, mots_uniques: 14870, chapitres: 114,
-        complexite_linguistique: 9.2, influence_historique: 9.5, coherence_interne: 9.7,
-        type_token_ratio: 0.45, longueur_moyenne_verset: 12.4, densite_thematique: 9.4,
-        periode_redaction: 'VIIe siècle EC', periode_couverture: '610-632 EC',
-        langue_originale: 'Arabe classique',
-        contextes_historiques: ['Société tribale pré-islamique', 'Conflits Mecque-Médine'],
-        manuscrits_anciens: ['Manuscrit de Birmingham', 'Codex de Paris', 'Manuscrit de Topkapi'],
-        region_origine: 'Hijaz (Arabie)', color: PALETTE.bleuClair, icon: '📗'
-    },
-    VEDAS: {
-        versets: 10552, mots_uniques: 8900, chapitres: 1028,
-        complexite_linguistique: 9.0, influence_historique: 8.8, coherence_interne: 8.4,
-        type_token_ratio: 0.35, longueur_moyenne_verset: 18.0, densite_thematique: 8.0,
-        periode_redaction: '1500-500 AEC', periode_couverture: 'c. 1500-500 AEC',
-        langue_originale: 'Sanskrit védique',
-        contextes_historiques: ['Civilisation védique', 'Période védique ancienne'],
-        manuscrits_anciens: ['Rigveda Shakala', 'Manuscrits de Poona'],
-        region_origine: 'Inde du Nord', color: PALETTE.vertVedas, icon: '🕉️'
-    },
-    TRIPITAKA: {
-        versets: 84000, mots_uniques: 12500, chapitres: 500,
-        complexite_linguistique: 8.2, influence_historique: 8.5, coherence_interne: 9.0,
-        type_token_ratio: 0.30, longueur_moyenne_verset: 22.0, densite_thematique: 7.8,
-        periode_redaction: 'IIIe siècle AEC', periode_couverture: 'c. 500-250 AEC',
-        langue_originale: 'Pali',
-        contextes_historiques: ['Bouddhisme ancien', 'Conciles bouddhiques'],
-        manuscrits_anciens: ['Manuscrits de Kandy', 'Édition de la Pali Text Society'],
-        region_origine: 'Inde / Sri Lanka', color: PALETTE.orangeBouddhisme, icon: '☸️'
-    },
-    AVESTA: {
-        versets: 6000, mots_uniques: 5200, chapitres: 72,
-        complexite_linguistique: 8.9, influence_historique: 7.8, coherence_interne: 8.0,
-        type_token_ratio: 0.40, longueur_moyenne_verset: 15.0, densite_thematique: 7.5,
-        periode_redaction: '1200-500 AEC', periode_couverture: 'c. 1200-500 AEC',
-        langue_originale: 'Avestique',
-        contextes_historiques: ['Perse achéménide', 'Zoroastrisme ancien'],
-        manuscrits_anciens: ['Manuscrits de Copenhague', 'Codex Avesta'],
-        region_origine: 'Perse (Iran)', color: PALETTE.pourpreZoroastre, icon: '🔥'
-    }
+    TORAH: { versets: 5845, mots_uniques: 7920, chapitres: 187, complexite_linguistique: 8.8, influence_historique: 9.8, coherence_interne: 9.2, type_token_ratio: 0.42, periode_redaction: 'XIII-VI siècle AEC', periode_couverture: 'c. 2000-1200 AEC', langue_originale: 'Hébreu ancien', contextes_historiques: ['Période patriarcale', 'Exode', 'Conquête', 'Monarchie unifiée'], manuscrits_anciens: ['Manuscrits de la Mer Morte', "Codex d'Alep", 'Codex de Leningrad'], region_origine: 'Levant/Canaan', color: PALETTE.bleuFrance, icon: '📜' },
+    BIBLE: { versets: 31102, mots_uniques: 15400, chapitres: 1189, complexite_linguistique: 8.5, influence_historique: 9.2, coherence_interne: 8.7, type_token_ratio: 0.38, periode_redaction: 'Ier siècle EC', periode_couverture: 'c. 6 AEC - 100 EC', langue_originale: 'Grec koinè, Araméen', contextes_historiques: ['Empire romain', 'Judaïsme du Second Temple', 'Diaspora juive'], manuscrits_anciens: ['Codex Sinaiticus', 'Codex Vaticanus', 'Papyrus Bodmer'], region_origine: 'Bassin méditerranéen', color: PALETTE.rougeFrance, icon: '✝️' },
+    CORAN: { versets: 6236, mots_uniques: 14870, chapitres: 114, complexite_linguistique: 9.2, influence_historique: 9.5, coherence_interne: 9.7, type_token_ratio: 0.45, periode_redaction: 'VIIe siècle EC', periode_couverture: '610-632 EC', langue_originale: 'Arabe classique', contextes_historiques: ['Société tribale pré-islamique', 'Conflits Mecque-Médine'], manuscrits_anciens: ['Manuscrit de Birmingham', 'Codex de Paris', 'Manuscrit de Topkapi'], region_origine: 'Hijaz (Arabie)', color: PALETTE.bleuClair, icon: '📗' },
+    VEDAS: { versets: 10552, mots_uniques: 8900, chapitres: 1028, complexite_linguistique: 9.0, influence_historique: 8.8, coherence_interne: 8.4, type_token_ratio: 0.35, periode_redaction: '1500-500 AEC', periode_couverture: 'c. 1500-500 AEC', langue_originale: 'Sanskrit védique', contextes_historiques: ['Civilisation védique', 'Période védique ancienne'], manuscrits_anciens: ['Rigveda Shakala', 'Manuscrits de Poona'], region_origine: 'Inde du Nord', color: PALETTE.vertVedas, icon: '🕉️' },
+    TRIPITAKA: { versets: 84000, mots_uniques: 12500, chapitres: 500, complexite_linguistique: 8.2, influence_historique: 8.5, coherence_interne: 9.0, type_token_ratio: 0.30, periode_redaction: 'IIIe siècle AEC', periode_couverture: 'c. 500-250 AEC', langue_originale: 'Pali', contextes_historiques: ['Bouddhisme ancien', 'Conciles bouddhiques'], manuscrits_anciens: ['Manuscrits de Kandy', 'Édition de la Pali Text Society'], region_origine: 'Inde / Sri Lanka', color: PALETTE.orangeBouddhisme, icon: '☸️' },
+    AVESTA: { versets: 6000, mots_uniques: 5200, chapitres: 72, complexite_linguistique: 8.9, influence_historique: 7.8, coherence_interne: 8.0, type_token_ratio: 0.40, periode_redaction: '1200-500 AEC', periode_couverture: 'c. 1200-500 AEC', langue_originale: 'Avestique', contextes_historiques: ['Perse achéménide', 'Zoroastrisme ancien'], manuscrits_anciens: ['Manuscrits de Copenhague', 'Codex Avesta'], region_origine: 'Perse (Iran)', color: PALETTE.pourpreZoroastre, icon: '🔥' }
 };
 
 const commonThemes = ['Monothéisme', 'Prophètes', 'Loi', 'Salut', 'Révélation'];
 
 const thematicAnalysis = {
-    TORAH: {
-        Monothéisme: { score: 90, evolution: 'Progressif' },
-        Prophètes: { score: 95, evolution: 'Fondateur' },
-        Loi: { score: 98, evolution: 'Systématique' },
-        Salut: { score: 75, evolution: 'Collectif' },
-        Révélation: { score: 88, evolution: 'Directe' }
-    },
-    BIBLE: {
-        Monothéisme: { score: 85, evolution: 'Trinitaire' },
-        Prophètes: { score: 90, evolution: 'Charismatique' },
-        Loi: { score: 80, evolution: 'Spirituelle' },
-        Salut: { score: 95, evolution: 'Universelle' },
-        Révélation: { score: 92, evolution: 'Incarnée' }
-    },
-    CORAN: {
-        Monothéisme: { score: 98, evolution: 'Absolu' },
-        Prophètes: { score: 92, evolution: 'Linéaire' },
-        Loi: { score: 88, evolution: 'Révélée' },
-        Salut: { score: 85, evolution: 'Conditionnel' },
-        Révélation: { score: 95, evolution: 'Progressive' }
-    },
-    VEDAS: {
-        Monothéisme: { score: 60, evolution: 'Panenthéiste' },
-        Prophètes: { score: 70, evolution: 'Rishi' },
-        Loi: { score: 85, evolution: 'Dharma' },
-        Salut: { score: 80, evolution: 'Moksha' },
-        Révélation: { score: 92, evolution: 'Shruti' }
-    },
-    TRIPITAKA: {
-        Monothéisme: { score: 30, evolution: 'Non-théiste' },
-        Prophètes: { score: 75, evolution: 'Bouddha' },
-        Loi: { score: 90, evolution: 'Dharma' },
-        Salut: { score: 92, evolution: 'Nirvana' },
-        Révélation: { score: 70, evolution: 'Réalisation' }
-    },
-    AVESTA: {
-        Monothéisme: { score: 88, evolution: 'Dualiste' },
-        Prophètes: { score: 85, evolution: 'Zoroastre' },
-        Loi: { score: 82, evolution: 'Asha' },
-        Salut: { score: 78, evolution: 'Frashokereti' },
-        Révélation: { score: 85, evolution: 'Vision' }
-    }
+    TORAH: { Monothéisme: { score: 90 }, Prophètes: { score: 95 }, Loi: { score: 98 }, Salut: { score: 75 }, Révélation: { score: 88 } },
+    BIBLE: { Monothéisme: { score: 85 }, Prophètes: { score: 90 }, Loi: { score: 80 }, Salut: { score: 95 }, Révélation: { score: 92 } },
+    CORAN: { Monothéisme: { score: 98 }, Prophètes: { score: 92 }, Loi: { score: 88 }, Salut: { score: 85 }, Révélation: { score: 95 } },
+    VEDAS: { Monothéisme: { score: 60 }, Prophètes: { score: 70 }, Loi: { score: 85 }, Salut: { score: 80 }, Révélation: { score: 92 } },
+    TRIPITAKA: { Monothéisme: { score: 30 }, Prophètes: { score: 75 }, Loi: { score: 90 }, Salut: { score: 92 }, Révélation: { score: 70 } },
+    AVESTA: { Monothéisme: { score: 88 }, Prophètes: { score: 85 }, Loi: { score: 82 }, Salut: { score: 78 }, Révélation: { score: 85 } }
 };
 
 const timelineData = [
@@ -1470,129 +847,32 @@ const timelineData = [
 ];
 
 const linguisticData = {
-    'Hébreu biblique': {
-        racines: 1850, complexite_morphologique: 7.9, preservation_textuelle: 95.2, verbes: 7000,
-        famille: 'Sémitique (Nord-ouest)',
-        caracteristiques: ['Système racine trilitère', 'Verbes à préfixes/suffixes', 'État construit'],
-        influence: ['Araméen', 'Akkadien', 'Cananéen'],
-        evolution: 'Hébreu mishnique → médiéval → moderne'
-    },
-    'Grec koinè': {
-        racines: 1200, complexite_morphologique: 8.2, preservation_textuelle: 92.5, verbes: 8500,
-        famille: 'Indo-européenne (Hellenique)',
-        caracteristiques: ['Système de cas (5 cas)', 'Article défini', 'Temps verbaux développés'],
-        influence: ['Grec attique', 'Latin', 'Langues sémitiques'],
-        evolution: 'Grec ancien → Koinè → Byzantin → Moderne'
-    },
-    'Arabe classique': {
-        racines: 1726, complexite_morphologique: 8.7, preservation_textuelle: 99.9, verbes: 10000,
-        famille: 'Sémitique (Central)',
-        caracteristiques: ['Racine trilitère complexe', 'Déclinaison casuelle', 'Dérivation extensive'],
-        influence: ['Araméen', 'Persan', 'Sud-arabique'],
-        evolution: 'Pré-classique → Classique → Standard moderne'
-    },
-    'Sanskrit védique': {
-        racines: 2000, complexite_morphologique: 9.5, preservation_textuelle: 98.0, verbes: 12000,
-        famille: 'Indo-européenne (Indo-aryenne)',
-        caracteristiques: ['Système de cas (8 cas)', 'Sandhi complexe', 'Composés extensifs'],
-        influence: ['Avestique', 'Prakrits', 'Hindi'],
-        evolution: 'Védique → Sanskrit classique → Prakrits'
-    },
-    'Pali': {
-        racines: 1500, complexite_morphologique: 7.5, preservation_textuelle: 96.0, verbes: 6000,
-        famille: 'Indo-européenne (Indo-aryenne)',
-        caracteristiques: ['Langue moyen-indienne', 'Simplification phonétique', 'Ordre SOV'],
-        influence: ['Sanskrit', 'Langues locales', 'Singhalais'],
-        evolution: 'Pali canonique → Pali commentarial → moderne'
-    },
-    'Avestique': {
-        racines: 1400, complexite_morphologique: 8.8, preservation_textuelle: 88.0, verbes: 5500,
-        famille: 'Indo-européenne (Iranienne)',
-        caracteristiques: ['Ancien iranien', 'Système casuel complet', 'Formes verbales archaïques'],
-        influence: ['Védique', 'Vieux-perse', 'Moyen-persan'],
-        evolution: 'Vieux-avestique → Jeune-avestique → Pehlevi'
-    }
+    'Hébreu biblique': { racines: 1850, complexite_morphologique: 7.9, preservation_textuelle: 95.2, verbes: 7000, famille: 'Sémitique (Nord-ouest)', caracteristiques: ['Système racine trilitère', 'Verbes à préfixes/suffixes', 'État construit'], influence: ['Araméen', 'Akkadien', 'Cananéen'], evolution: 'Hébreu mishnique → médiéval → moderne' },
+    'Grec koinè': { racines: 1200, complexite_morphologique: 8.2, preservation_textuelle: 92.5, verbes: 8500, famille: 'Indo-européenne (Hellenique)', caracteristiques: ['Système de cas (5 cas)', 'Article défini', 'Temps verbaux développés'], influence: ['Grec attique', 'Latin', 'Langues sémitiques'], evolution: 'Grec ancien → Koinè → Byzantin → Moderne' },
+    'Arabe classique': { racines: 1726, complexite_morphologique: 8.7, preservation_textuelle: 99.9, verbes: 10000, famille: 'Sémitique (Central)', caracteristiques: ['Racine trilitère complexe', 'Déclinaison casuelle', 'Dérivation extensive'], influence: ['Araméen', 'Persan', 'Sud-arabique'], evolution: 'Pré-classique → Classique → Standard moderne' },
+    'Sanskrit védique': { racines: 2000, complexite_morphologique: 9.5, preservation_textuelle: 98.0, verbes: 12000, famille: 'Indo-européenne (Indo-aryenne)', caracteristiques: ['Système de cas (8 cas)', 'Sandhi complexe', 'Composés extensifs'], influence: ['Avestique', 'Prakrits', 'Hindi'], evolution: 'Védique → Sanskrit classique → Prakrits' },
+    'Pali': { racines: 1500, complexite_morphologique: 7.5, preservation_textuelle: 96.0, verbes: 6000, famille: 'Indo-européenne (Indo-aryenne)', caracteristiques: ['Langue moyen-indienne', 'Simplification phonétique', 'Ordre SOV'], influence: ['Sanskrit', 'Langues locales', 'Singhalais'], evolution: 'Pali canonique → Pali commentarial → moderne' },
+    'Avestique': { racines: 1400, complexite_morphologique: 8.8, preservation_textuelle: 88.0, verbes: 5500, famille: 'Indo-européenne (Iranienne)', caracteristiques: ['Ancien iranien', 'Système casuel complet', 'Formes verbales archaïques'], influence: ['Védique', 'Vieux-perse', 'Moyen-persan'], evolution: 'Vieux-avestique → Jeune-avestique → Pehlevi' }
 };
 
 const geographicalData = {
-    TORAH: {
-        regions: ['Mésopotamie', 'Canaan', 'Égypte', 'Sinaï'],
-        centres_culturels: ['Ur', 'Haran', 'Hébron', 'Jérusalem'],
-        routes_commerciales: ['Route de la Mer', 'Via Maris', 'Route du Roi'],
-        influence_geographique: 8.5
-    },
-    BIBLE: {
-        regions: ['Judée', 'Galilée', 'Samarie', 'Diaspora'],
-        centres_culturels: ['Jérusalem', 'Antioche', 'Éphèse', 'Rome', 'Alexandrie'],
-        routes_commerciales: ['Via Maris', 'Voie Appienne', 'Routes maritimes'],
-        influence_geographique: 9.2
-    },
-    CORAN: {
-        regions: ['Hijaz', 'Mecque', 'Médine', 'Taïf'],
-        centres_culturels: ['Mecque', 'Médine', 'Damas', 'Bagdad'],
-        routes_commerciales: ["Route de l'encens", 'Pistes caravanières'],
-        influence_geographique: 8.8
-    },
-    VEDAS: {
-        regions: ['Punjab', 'Gange', 'Indus'],
-        centres_culturels: ['Harappa', 'Varanasi', 'Ayodhya'],
-        routes_commerciales: ['Routes de l\'Inde antique'],
-        influence_geographique: 8.2
-    },
-    TRIPITAKA: {
-        regions: ['Magadha', 'Sri Lanka', 'Asie du Sud-Est'],
-        centres_culturels: ['Bodh Gaya', 'Anuradhapura', 'Nalanda'],
-        routes_commerciales: ['Routes maritimes indiennes'],
-        influence_geographique: 8.0
-    },
-    AVESTA: {
-        regions: ['Persépolis', 'Bactriane', 'Médie'],
-        centres_culturels: ['Persépolis', 'Suse', 'Bactres'],
-        routes_commerciales: ['Route de la Soie'],
-        influence_geographique: 7.8
-    }
+    TORAH: { regions: ['Mésopotamie', 'Canaan', 'Égypte', 'Sinaï'], centres_culturels: ['Ur', 'Haran', 'Hébron', 'Jérusalem'], routes_commerciales: ['Route de la Mer', 'Via Maris', 'Route du Roi'], influence_geographique: 8.5 },
+    BIBLE: { regions: ['Judée', 'Galilée', 'Samarie', 'Diaspora'], centres_culturels: ['Jérusalem', 'Antioche', 'Éphèse', 'Rome', 'Alexandrie'], routes_commerciales: ['Via Maris', 'Voie Appienne', 'Routes maritimes'], influence_geographique: 9.2 },
+    CORAN: { regions: ['Hijaz', 'Mecque', 'Médine', 'Taïf'], centres_culturels: ['Mecque', 'Médine', 'Damas', 'Bagdad'], routes_commerciales: ["Route de l'encens", 'Pistes caravanières'], influence_geographique: 8.8 },
+    VEDAS: { regions: ['Punjab', 'Gange', 'Indus'], centres_culturels: ['Harappa', 'Varanasi', 'Ayodhya'], routes_commerciales: ["Routes de l'Inde antique"], influence_geographique: 8.2 },
+    TRIPITAKA: { regions: ['Magadha', 'Sri Lanka', 'Asie du Sud-Est'], centres_culturels: ['Bodh Gaya', 'Anuradhapura', 'Nalanda'], routes_commerciales: ['Routes maritimes indiennes'], influence_geographique: 8.0 },
+    AVESTA: { regions: ['Persépolis', 'Bactriane', 'Médie'], centres_culturels: ['Persépolis', 'Suse', 'Bactres'], routes_commerciales: ['Route de la Soie'], influence_geographique: 7.8 }
 };
 
 const geoExtended = {
-    TORAH: {
-        regions: [{ name: 'Mésopotamie', coords: [35.0, 43.0] }, { name: 'Canaan', coords: [31.5, 34.8] }, { name: 'Égypte', coords: [26.0, 30.0] }, { name: 'Sinaï', coords: [29.5, 33.8] }],
-        centres: [{ name: 'Ur', coords: [30.96, 46.1] }, { name: 'Haran', coords: [36.87, 39.03] }, { name: 'Jérusalem', coords: [31.77, 35.21] }],
-        routes: [{ name: 'Route de la Mer', coords: [[30.0, 45.0], [32.0, 35.0], [31.5, 34.8]] }],
-        color: PALETTE.bleuFrance
-    },
-    BIBLE: {
-        regions: [{ name: 'Judée', coords: [31.5, 35.0] }, { name: 'Galilée', coords: [32.8, 35.5] }, { name: 'Samarie', coords: [32.2, 35.3] }, { name: 'Diaspora', coords: [36.0, 25.0] }],
-        centres: [{ name: 'Jérusalem', coords: [31.77, 35.21] }, { name: 'Antioche', coords: [36.2, 36.16] }, { name: 'Rome', coords: [41.9, 12.5] }, { name: 'Alexandrie', coords: [31.2, 29.9] }],
-        routes: [{ name: 'Voie Appienne', coords: [[41.9, 12.5], [40.0, 15.0], [38.0, 15.0]] }],
-        color: PALETTE.rougeFrance
-    },
-    CORAN: {
-        regions: [{ name: 'Hijaz', coords: [23.0, 41.0] }, { name: 'Mecque', coords: [21.42, 39.83] }, { name: 'Médine', coords: [24.47, 39.61] }, { name: 'Taïf', coords: [21.27, 40.42] }],
-        centres: [{ name: 'Mecque', coords: [21.42, 39.83] }, { name: 'Médine', coords: [24.47, 39.61] }, { name: 'Damas', coords: [33.51, 36.29] }, { name: 'Bagdad', coords: [33.31, 44.36] }],
-        routes: [{ name: "Route de l'encens", coords: [[21.42, 39.83], [24.47, 39.61], [33.51, 36.29]] }],
-        color: PALETTE.bleuClair
-    },
-    VEDAS: {
-        regions: [{ name: 'Punjab', coords: [31.0, 75.0] }, { name: 'Gange', coords: [25.0, 83.0] }, { name: 'Indus', coords: [28.0, 70.0] }],
-        centres: [{ name: 'Harappa', coords: [30.63, 72.86] }, { name: 'Varanasi', coords: [25.32, 83.01] }, { name: 'Ayodhya', coords: [26.79, 82.19] }],
-        routes: [{ name: 'Routes indiennes', coords: [[30.63, 72.86], [25.32, 83.01]] }],
-        color: PALETTE.vertVedas
-    },
-    TRIPITAKA: {
-        regions: [{ name: 'Magadha', coords: [25.0, 85.0] }, { name: 'Sri Lanka', coords: [7.87, 80.77] }, { name: 'Asie SE', coords: [15.0, 100.0] }],
-        centres: [{ name: 'Bodh Gaya', coords: [24.69, 84.99] }, { name: 'Anuradhapura', coords: [8.31, 80.40] }, { name: 'Nalanda', coords: [25.13, 85.44] }],
-        routes: [{ name: 'Routes maritimes', coords: [[8.31, 80.40], [15.0, 100.0]] }],
-        color: PALETTE.orangeBouddhisme
-    },
-    AVESTA: {
-        regions: [{ name: 'Persépolis', coords: [29.93, 52.89] }, { name: 'Bactriane', coords: [36.75, 66.89] }, { name: 'Médie', coords: [34.79, 48.51] }],
-        centres: [{ name: 'Persépolis', coords: [29.93, 52.89] }, { name: 'Suse', coords: [32.19, 48.26] }, { name: 'Bactres', coords: [36.75, 66.89] }],
-        routes: [{ name: 'Route de la Soie', coords: [[29.93, 52.89], [36.75, 66.89]] }],
-        color: PALETTE.pourpreZoroastre
-    }
+    TORAH: { regions: [{ name: 'Mésopotamie', coords: [35.0, 43.0] }, { name: 'Canaan', coords: [31.5, 34.8] }, { name: 'Égypte', coords: [26.0, 30.0] }, { name: 'Sinaï', coords: [29.5, 33.8] }], centres: [{ name: 'Ur', coords: [30.96, 46.1] }, { name: 'Haran', coords: [36.87, 39.03] }, { name: 'Jérusalem', coords: [31.77, 35.21] }], routes: [{ name: 'Route de la Mer', coords: [[30.0, 45.0], [32.0, 35.0], [31.5, 34.8]] }], color: PALETTE.bleuFrance },
+    BIBLE: { regions: [{ name: 'Judée', coords: [31.5, 35.0] }, { name: 'Galilée', coords: [32.8, 35.5] }, { name: 'Samarie', coords: [32.2, 35.3] }, { name: 'Diaspora', coords: [36.0, 25.0] }], centres: [{ name: 'Jérusalem', coords: [31.77, 35.21] }, { name: 'Antioche', coords: [36.2, 36.16] }, { name: 'Rome', coords: [41.9, 12.5] }, { name: 'Alexandrie', coords: [31.2, 29.9] }], routes: [{ name: 'Voie Appienne', coords: [[41.9, 12.5], [40.0, 15.0], [38.0, 15.0]] }], color: PALETTE.rougeFrance },
+    CORAN: { regions: [{ name: 'Hijaz', coords: [23.0, 41.0] }, { name: 'Mecque', coords: [21.42, 39.83] }, { name: 'Médine', coords: [24.47, 39.61] }, { name: 'Taïf', coords: [21.27, 40.42] }], centres: [{ name: 'Mecque', coords: [21.42, 39.83] }, { name: 'Médine', coords: [24.47, 39.61] }, { name: 'Damas', coords: [33.51, 36.29] }, { name: 'Bagdad', coords: [33.31, 44.36] }], routes: [{ name: "Route de l'encens", coords: [[21.42, 39.83], [24.47, 39.61], [33.51, 36.29]] }], color: PALETTE.bleuClair },
+    VEDAS: { regions: [{ name: 'Punjab', coords: [31.0, 75.0] }, { name: 'Gange', coords: [25.0, 83.0] }, { name: 'Indus', coords: [28.0, 70.0] }], centres: [{ name: 'Harappa', coords: [30.63, 72.86] }, { name: 'Varanasi', coords: [25.32, 83.01] }, { name: 'Ayodhya', coords: [26.79, 82.19] }], routes: [{ name: 'Routes indiennes', coords: [[30.63, 72.86], [25.32, 83.01]] }], color: PALETTE.vertVedas },
+    TRIPITAKA: { regions: [{ name: 'Magadha', coords: [25.0, 85.0] }, { name: 'Sri Lanka', coords: [7.87, 80.77] }, { name: 'Asie SE', coords: [15.0, 100.0] }], centres: [{ name: 'Bodh Gaya', coords: [24.69, 84.99] }, { name: 'Anuradhapura', coords: [8.31, 80.40] }, { name: 'Nalanda', coords: [25.13, 85.44] }], routes: [{ name: 'Routes maritimes', coords: [[8.31, 80.40], [15.0, 100.0]] }], color: PALETTE.orangeBouddhisme },
+    AVESTA: { regions: [{ name: 'Persépolis', coords: [29.93, 52.89] }, { name: 'Bactriane', coords: [36.75, 66.89] }, { name: 'Médie', coords: [34.79, 48.51] }], centres: [{ name: 'Persépolis', coords: [29.93, 52.89] }, { name: 'Suse', coords: [32.19, 48.26] }, { name: 'Bactres', coords: [36.75, 66.89] }], routes: [{ name: 'Route de la Soie', coords: [[29.93, 52.89], [36.75, 66.89]] }], color: PALETTE.pourpreZoroastre }
 };
 
-/* ==================== VERSETS POUR RECHERCHE ==================== */
 const versesDB = [
     { livre: 'TORAH', ref: 'Genèse 1:1', texte: 'Au commencement, Dieu créa les cieux et la terre.' },
     { livre: 'TORAH', ref: 'Exode 20:3', texte: "Tu n'auras pas d'autres dieux devant ma face." },
@@ -1611,7 +891,6 @@ const versesDB = [
     { livre: 'AVESTA', ref: 'Yasna 30.2', texte: 'Écoutez avec vos oreilles les meilleures choses.' }
 ];
 
-/* ==================== QUIZ ==================== */
 const quizQuestions = [
     { question: '« Tu aimeras ton prochain comme toi-même » — d\'où vient ce verset ?', options: ['TORAH', 'BIBLE', 'CORAN', 'VEDAS'], correct: 'TORAH' },
     { question: '« Lis, au nom de ton Seigneur qui a créé ! » — d\'où vient ce verset ?', options: ['TORAH', 'BIBLE', 'CORAN', 'TRIPITAKA'], correct: 'CORAN' },
@@ -1624,37 +903,60 @@ const quizQuestions = [
 ];
 
 let quizIndex = 0, quizScore = 0, quizAnswered = 0;
-
-/* ==================== RENDER MÉTRIQUES ==================== */
 let displayedBooks = ['TORAH', 'BIBLE', 'CORAN', 'VEDAS', 'TRIPITAKA', 'AVESTA'];
 
+/* ==================== UTILITAIRES ==================== */
+function ensureData() {
+    if (!metrics || Object.keys(metrics).length === 0) {
+        console.error('❌ metrics vide !');
+        return false;
+    }
+    if (!displayedBooks || displayedBooks.length === 0) {
+        displayedBooks = ['TORAH', 'BIBLE', 'CORAN', 'VEDAS', 'TRIPITAKA', 'AVESTA'];
+    }
+    return true;
+}
+
+function getChartColors() {
+    const isDark = document.body.classList.contains('dark-mode');
+    return {
+        paper: isDark ? '#0D1117' : '#FFFFFF',
+        plot: isDark ? '#0D1117' : '#FFFFFF',
+        text: isDark ? '#E6EDF3' : '#1A1A1A',
+        grid: isDark ? '#21262D' : '#E8ECF1',
+        title: isDark ? '#82B8EE' : '#0055A4'
+    };
+}
+
+function showEmptyMessage(containerId, message) {
+    const el = document.getElementById(containerId);
+    if (el) {
+        el.innerHTML = `<div class="empty-chart-message"><div class="icon">📊</div><p>${message}</p></div>`;
+    }
+}
+
+/* ==================== MÉTRIQUES ==================== */
 function renderMetrics() {
+    if (!ensureData()) return;
     const grid = document.getElementById('metricsGrid');
     const totalVersets = displayedBooks.reduce((s, l) => s + metrics[l].versets, 0);
 
     grid.innerHTML = displayedBooks.map(livre => {
         const m = metrics[livre];
-        const cls = livre === 'TORAH' ? 'card-torah' : livre === 'BIBLE' ? 'card-bible' :
-                    livre === 'CORAN' ? 'card-coran' : livre === 'VEDAS' ? 'card-vedas' :
-                    livre === 'TRIPITAKA' ? 'card-tripitaka' : 'card-avesta';
-        return `
-            <div class="academic-card ${cls}" style="animation-delay:${displayedBooks.indexOf(livre)*0.05}s;">
-                <div class="card-title" style="color:${m.color};">${m.icon} ${livre}</div>
-                <div class="metric-value" style="color:${m.color};" data-count="${m.versets}">0</div>
-                <div class="metric-label">Versets</div>
-                <div class="card-details">${m.periode_redaction}<br>${m.langue_originale}</div>
-            </div>
-        `;
-    }).join('') + `
-        <div class="academic-card" style="border-left:5px solid var(--or-sacre); animation-delay:0.3s;">
-            <div class="card-title" style="color:var(--or-sacre);">📚 SYNTHÈSE</div>
-            <div class="metric-value" style="color:var(--or-sacre);" data-count="${totalVersets}">0</div>
-            <div class="metric-label">Versets total</div>
-            <div class="card-details">${displayedBooks.length} traditions<br>${Object.keys(linguisticData).length} langues anciennes<br>3000+ ans d'histoire</div>
-        </div>
-    `;
+        const cls = livre === 'TORAH' ? 'card-torah' : livre === 'BIBLE' ? 'card-bible' : livre === 'CORAN' ? 'card-coran' : livre === 'VEDAS' ? 'card-vedas' : livre === 'TRIPITAKA' ? 'card-tripitaka' : 'card-avesta';
+        return `<div class="academic-card ${cls}" style="animation-delay:${displayedBooks.indexOf(livre)*0.05}s;">
+            <div class="card-title" style="color:${m.color};">${m.icon} ${livre}</div>
+            <div class="metric-value" style="color:${m.color};" data-count="${m.versets}">0</div>
+            <div class="metric-label">Versets</div>
+            <div class="card-details">${m.periode_redaction}<br>${m.langue_originale}</div>
+        </div>`;
+    }).join('') + `<div class="academic-card" style="border-left:5px solid var(--or-sacre); animation-delay:0.3s;">
+        <div class="card-title" style="color:var(--or-sacre);">📚 SYNTHÈSE</div>
+        <div class="metric-value" style="color:var(--or-sacre);" data-count="${totalVersets}">0</div>
+        <div class="metric-label">Versets total</div>
+        <div class="card-details">${displayedBooks.length} traditions<br>${Object.keys(linguisticData).length} langues anciennes<br>3000+ ans d'histoire</div>
+    </div>`;
 
-    // Animation des compteurs
     document.querySelectorAll('[data-count]').forEach(el => {
         animateValue(el, 0, parseInt(el.dataset.count), 1500);
     });
@@ -1671,102 +973,102 @@ function animateValue(el, start, end, duration) {
     requestAnimationFrame(step);
 }
 
-/* ==================== GRAPHIQUES ==================== */
-const chartConfig = {
-    paper_bgcolor: 'rgba(0,0,0,0)',
-    plot_bgcolor: 'rgba(0,0,0,0)',
-    font: { color: PALETTE.texteNoir, size: 11, family: 'Inter, sans-serif' },
-    margin: { l: 55, r: 30, t: 50, b: 55 }
-};
+/* ==================== CONFIG GRAPHIQUES ==================== */
+function getChartConfig() {
+    const c = getChartColors();
+    return {
+        paper_bgcolor: c.paper,
+        plot_bgcolor: c.plot,
+        font: { color: c.text, size: 11, family: 'Inter, sans-serif' },
+        margin: { l: 55, r: 30, t: 50, b: 55 }
+    };
+}
 
-const axisStyle = {
-    tickfont: { color: PALETTE.texteNoir, size: 10 },
-    titlefont: { color: PALETTE.bleuFonce, size: 11 },
-    gridcolor: PALETTE.grisClair,
-    zerolinecolor: PALETTE.grisClair
-};
+function getAxisStyle() {
+    const c = getChartColors();
+    return {
+        tickfont: { color: c.text, size: 10 },
+        titlefont: { color: c.title, size: 11 },
+        gridcolor: c.grid,
+        zerolinecolor: c.grid
+    };
+}
 
+/* ==================== GRAPHIQUES TAB 1 ==================== */
 function renderTextMetrics() {
+    if (!ensureData()) return;
     const livres = displayedBooks;
     const traces = [
         { name: 'Versets', key: 'versets' },
         { name: 'Mots uniques', key: 'mots_uniques' },
         { name: 'Chapitres', key: 'chapitres' },
         { name: 'Complexité (×1000)', key: 'complexite_linguistique' }
-    ].map((t, i) => ({
-        name: t.name,
-        x: livres,
+    ].map((t) => ({
+        name: t.name, x: livres,
         y: livres.map(l => t.key === 'complexite_linguistique' ? metrics[l][t.key] * 1000 : metrics[l][t.key]),
         type: 'bar',
-        marker: {
-            color: livres.map(l => metrics[l].color),
-            line: { color: PALETTE.blanc, width: 1 }
-        },
+        marker: { color: livres.map(l => metrics[l].color), line: { color: '#FFFFFF', width: 1 } },
         text: livres.map(l => t.key === 'complexite_linguistique' ? metrics[l][t.key] : metrics[l][t.key].toLocaleString('fr-FR')),
-        textposition: 'auto',
-        textfont: { color: 'white', size: 9 }
+        textposition: 'auto', textfont: { color: 'white', size: 9 }
     }));
 
     Plotly.newPlot('chartTextMetrics', traces, {
-        ...chartConfig, barmode: 'group', height: 400,
-        title: { text: 'Métriques Textuelles', font: { size: 14, color: PALETTE.bleuFonce } },
-        showlegend: true,
-        legend: { orientation: 'h', y: -0.2, font: { size: 10 } },
-        xaxis: { ...axisStyle },
-        yaxis: { ...axisStyle }
+        ...getChartConfig(), barmode: 'group', height: 400,
+        title: { text: 'Métriques Textuelles', font: { size: 14, color: getChartColors().title } },
+        showlegend: true, legend: { orientation: 'h', y: -0.2, font: { size: 10 } },
+        xaxis: { ...getAxisStyle() }, yaxis: { ...getAxisStyle() }
     }, { responsive: true });
 }
 
 function renderRadar() {
+    if (!ensureData()) return;
     const traces = displayedBooks.map(livre => {
         const values = commonThemes.map(t => thematicAnalysis[livre][t]?.score || 0);
         values.push(values[0]);
         return {
-            type: 'scatterpolar',
-            r: values,
-            theta: [...commonThemes, commonThemes[0]],
-            fill: 'toself',
-            name: livre,
+            type: 'scatterpolar', r: values, theta: [...commonThemes, commonThemes[0]],
+            fill: 'toself', name: livre,
             line: { color: metrics[livre].color, width: 2 },
-            fillcolor: metrics[livre].color + '30',
-            opacity: 0.85
+            fillcolor: metrics[livre].color + '30', opacity: 0.85
         };
     });
 
     Plotly.newPlot('chartRadar', traces, {
-        ...chartConfig,
+        ...getChartConfig(),
         polar: {
-            bgcolor: PALETTE.bleuTresClair,
-            radialaxis: { visible: true, range: [0, 100], gridcolor: PALETTE.grisClair, tickfont: { color: PALETTE.texteGris, size: 9 } },
-            angularaxis: { gridcolor: PALETTE.grisClair, tickfont: { color: PALETTE.bleuFonce, size: 10 } }
+            bgcolor: getChartColors().paper === '#0D1117' ? '#161B22' : '#E6F0FA',
+            radialaxis: { visible: true, range: [0, 100], gridcolor: getChartColors().grid, tickfont: { color: getChartColors().text, size: 9 } },
+            angularaxis: { gridcolor: getChartColors().grid, tickfont: { color: getChartColors().title, size: 10 } }
         },
-        title: { text: 'Thèmes Fondamentaux', font: { size: 14, color: PALETTE.bleuFonce } },
+        title: { text: 'Thèmes Fondamentaux', font: { size: 14, color: getChartColors().title } },
         height: 400, showlegend: true,
         legend: { orientation: 'h', y: -0.15, font: { size: 10 } }
     }, { responsive: true });
 }
 
 function renderConsistency() {
+    if (!ensureData()) return;
     const traces = displayedBooks.map(livre => ({
         x: [metrics[livre].coherence_interne],
         y: [metrics[livre].influence_historique],
         mode: 'markers+text',
-        marker: { size: 55, color: metrics[livre].color, opacity: 0.85, line: { color: PALETTE.blanc, width: 2 } },
+        marker: { size: 55, color: metrics[livre].color, opacity: 0.85, line: { color: '#FFFFFF', width: 2 } },
         text: [livre], textposition: 'middle center',
         textfont: { color: 'white', size: 10, weight: 'bold' },
         type: 'scatter', name: livre, showlegend: false
     }));
 
     Plotly.newPlot('chartConsistency', traces, {
-        ...chartConfig,
-        title: { text: 'Cohérence vs Influence', font: { size: 14, color: PALETTE.bleuFonce } },
-        xaxis: { ...axisStyle, title: 'Cohérence (/10)', range: [7, 10] },
-        yaxis: { ...axisStyle, title: 'Influence (/10)', range: [7, 10] },
+        ...getChartConfig(),
+        title: { text: 'Cohérence vs Influence', font: { size: 14, color: getChartColors().title } },
+        xaxis: { ...getAxisStyle(), title: 'Cohérence (/10)', range: [7, 10] },
+        yaxis: { ...getAxisStyle(), title: 'Influence (/10)', range: [7, 10] },
         height: 350
     }, { responsive: true });
 }
 
 function renderTimeline() {
+    if (!ensureData()) return;
     const periods = displayedBooks.map(l => {
         let start, end;
         if (l === 'TORAH') { start = -1200; end = -400; }
@@ -1779,21 +1081,22 @@ function renderTimeline() {
     });
 
     const traces = periods.map(p => ({
-        x: [p.start, p.end],
-        y: [p.livre, p.livre],
+        x: [p.start, p.end], y: [p.livre, p.livre],
         mode: 'lines',
         line: { color: metrics[p.livre].color, width: 20 },
         type: 'scatter', name: p.livre, showlegend: false
     }));
 
     Plotly.newPlot('chartTimeline', traces, {
-        ...chartConfig, height: 300,
-        title: { text: 'Périodes de Rédaction', font: { size: 14, color: PALETTE.bleuFonce } },
-        xaxis: { ...axisStyle }, yaxis: { ...axisStyle }
+        ...getChartConfig(), height: 300,
+        title: { text: 'Périodes de Rédaction', font: { size: 14, color: getChartColors().title } },
+        xaxis: { ...getAxisStyle() }, yaxis: { ...getAxisStyle() }
     }, { responsive: true });
 }
 
+/* ==================== GRAPHIQUES TAB 2 ==================== */
 function renderLinguistic() {
+    if (!ensureData()) return;
     const langues = Object.keys(linguisticData);
     const keys = ['complexite_morphologique', 'preservation_textuelle', 'racines', 'verbes'];
     const names = ['Complexité morpho.', 'Préservation (%)', 'Racines', 'Verbes'];
@@ -1803,41 +1106,43 @@ function renderLinguistic() {
         name: names[i], x: langues,
         y: langues.map(l => linguisticData[l][k]),
         type: 'bar',
-        marker: { color: colors[i], line: { color: PALETTE.blanc, width: 1 } },
+        marker: { color: colors[i], line: { color: '#FFFFFF', width: 1 } },
         text: langues.map(l => linguisticData[l][k]),
         textposition: 'auto', textfont: { color: 'white', size: 9 }
     }));
 
     Plotly.newPlot('chartLinguistic', traces, {
-        ...chartConfig, barmode: 'group', height: 400,
-        title: { text: 'Complexité Linguistique', font: { size: 14, color: PALETTE.bleuFonce } },
+        ...getChartConfig(), barmode: 'group', height: 400,
+        title: { text: 'Complexité Linguistique', font: { size: 14, color: getChartColors().title } },
         showlegend: true, legend: { orientation: 'h', y: -0.25, font: { size: 9 } },
-        xaxis: { ...axisStyle, tickfont: { color: PALETTE.texteNoir, size: 9 } },
-        yaxis: { ...axisStyle }
+        xaxis: { ...getAxisStyle(), tickfont: { color: getChartColors().text, size: 9 } },
+        yaxis: { ...getAxisStyle() }
     }, { responsive: true });
 }
 
 function renderTTR() {
+    if (!ensureData()) return;
     const livres = displayedBooks;
     const traces = [{
         x: livres,
         y: livres.map(l => metrics[l].type_token_ratio),
         type: 'bar',
-        marker: { color: livres.map(l => metrics[l].color), line: { color: PALETTE.blanc, width: 2 } },
+        marker: { color: livres.map(l => metrics[l].color), line: { color: '#FFFFFF', width: 2 } },
         text: livres.map(l => metrics[l].type_token_ratio.toFixed(3)),
         textposition: 'auto', textfont: { color: 'white', size: 11, weight: 'bold' }
     }];
 
     Plotly.newPlot('chartTTR', traces, {
-        ...chartConfig, height: 350,
-        title: { text: 'Type/Token Ratio (richesse lexicale)', font: { size: 14, color: PALETTE.bleuFonce } },
-        xaxis: { ...axisStyle }, yaxis: { ...axisStyle, title: 'TTR' },
+        ...getChartConfig(), height: 350,
+        title: { text: 'Type/Token Ratio (richesse lexicale)', font: { size: 14, color: getChartColors().title } },
+        xaxis: { ...getAxisStyle() }, yaxis: { ...getAxisStyle(), title: 'TTR' },
         showlegend: false
     }, { responsive: true });
 }
 
 function renderLanguageTabs() {
     const container = document.getElementById('languageTabs');
+    if (!container) return;
     const langues = Object.keys(linguisticData);
 
     let html = '<div class="inner-tabs">';
@@ -1849,28 +1154,26 @@ function renderLanguageTabs() {
     langues.forEach((langue, i) => {
         const d = linguisticData[langue];
         const color = i % 2 === 0 ? PALETTE.bleuFrance : PALETTE.rougeFrance;
-        html += `
-            <div class="inner-tab-content ${i === 0 ? 'active' : ''}" id="lang-${i}">
-                <div style="background:linear-gradient(to right, ${color}25, ${color}05); padding:1rem; border-radius:10px; border-left:5px solid ${color}; margin-bottom:1rem;">
-                    <div style="color:${color}; font-weight:800; font-size:1.2rem;">${langue}</div>
-                    <div style="color:var(--texte-gris);">Famille ${d.famille}</div>
-                </div>
-                <div class="metrics-row">
-                    <div class="metric-box"><div class="value">${d.racines}</div><div class="label">Racines</div></div>
-                    <div class="metric-box"><div class="value">${d.verbes.toLocaleString('fr-FR')}+</div><div class="label">Verbes</div></div>
-                    <div class="metric-box"><div class="value">${d.complexite_morphologique}/10</div><div class="label">Complexité</div></div>
-                    <div class="metric-box"><div class="value">${d.preservation_textuelle}%</div><div class="label">Préservation</div></div>
-                </div>
-                <div class="info-block"><div class="info-title" style="color:${color};">Caractéristiques :</div>
-                    <ul>${d.caracteristiques.map(c => `<li>${c}</li>`).join('')}</ul></div>
-                <div class="info-block" style="border-left-color:${PALETTE.rougeFrance};">
-                    <div class="info-title" style="color:${PALETTE.rougeFrance};">Influences :</div>
-                    <ul>${d.influence.map(c => `<li>${c}</li>`).join('')}</ul></div>
-                <div class="info-block" style="border-left-color:${PALETTE.bleuClair};">
-                    <div class="info-title" style="color:${PALETTE.bleuClair};">Évolution :</div>
-                    <div style="color:var(--texte-gris);">${d.evolution}</div></div>
+        html += `<div class="inner-tab-content ${i === 0 ? 'active' : ''}" id="lang-${i}">
+            <div style="background:linear-gradient(to right, ${color}25, ${color}05); padding:1rem; border-radius:10px; border-left:5px solid ${color}; margin-bottom:1rem;">
+                <div style="color:${color}; font-weight:800; font-size:1.2rem;">${langue}</div>
+                <div style="color:var(--texte-gris);">Famille ${d.famille}</div>
             </div>
-        `;
+            <div class="metrics-row">
+                <div class="metric-box"><div class="value">${d.racines}</div><div class="label">Racines</div></div>
+                <div class="metric-box"><div class="value">${d.verbes.toLocaleString('fr-FR')}+</div><div class="label">Verbes</div></div>
+                <div class="metric-box"><div class="value">${d.complexite_morphologique}/10</div><div class="label">Complexité</div></div>
+                <div class="metric-box"><div class="value">${d.preservation_textuelle}%</div><div class="label">Préservation</div></div>
+            </div>
+            <div class="info-block"><div class="info-title" style="color:${color};">Caractéristiques :</div>
+                <ul>${d.caracteristiques.map(c => `<li>${c}</li>`).join('')}</ul></div>
+            <div class="info-block" style="border-left-color:${PALETTE.rougeFrance};">
+                <div class="info-title" style="color:${PALETTE.rougeFrance};">Influences :</div>
+                <ul>${d.influence.map(c => `<li>${c}</li>`).join('')}</ul></div>
+            <div class="info-block" style="border-left-color:${PALETTE.bleuClair};">
+                <div class="info-title" style="color:${PALETTE.bleuClair};">Évolution :</div>
+                <div style="color:var(--texte-gris);">${d.evolution}</div></div>
+        </div>`;
     });
     container.innerHTML = html;
 }
@@ -1883,229 +1186,292 @@ function switchInnerTab(btn, tabId) {
     document.getElementById(tabId).classList.add('active');
 }
 
+/* ==================== GRAPHIQUES TAB 3 ==================== */
 function renderHistoricalTimeline() {
+    if (!ensureData()) return;
     const traces = displayedBooks.map(livre => {
         const data = timelineData.filter(d => d.livre === livre);
+        if (data.length === 0) return null;
         return {
             x: data.map(d => d.annee),
             y: data.map(d => d.importance),
-            mode: 'markers+text',
-            type: 'scatter',
-            name: livre,
-            marker: { size: data.map(d => d.importance * 3), color: metrics[livre].color, opacity: 0.85, line: { color: PALETTE.blanc, width: 2 } },
+            mode: 'markers+text', type: 'scatter', name: livre,
+            marker: { size: data.map(d => d.importance * 3), color: metrics[livre].color, opacity: 0.85, line: { color: '#FFFFFF', width: 2 } },
             text: data.map(d => d.evenement),
             textposition: 'top center',
-            textfont: { size: 8, color: PALETTE.texteNoir },
+            textfont: { size: 8, color: getChartColors().text },
             hovertext: data.map(d => `${d.evenement}<br>Importance: ${d.importance}/10`)
         };
-    });
+    }).filter(t => t !== null);
 
     Plotly.newPlot('chartHistoricalTimeline', traces, {
-        ...chartConfig, height: 500,
-        title: { text: 'Chronologie Historique Détaillée', font: { size: 16, color: PALETTE.bleuFonce } },
-        xaxis: { ...axisStyle, title: 'Année', zeroline: true, zerolinecolor: PALETTE.rougeFrance, zerolinewidth: 2 },
-        yaxis: { ...axisStyle, title: 'Importance historique' },
+        ...getChartConfig(), height: 500,
+        title: { text: 'Chronologie Historique Détaillée', font: { size: 16, color: getChartColors().title } },
+        xaxis: { ...getAxisStyle(), title: 'Année', zeroline: true, zerolinecolor: PALETTE.rougeFrance, zerolinewidth: 2 },
+        yaxis: { ...getAxisStyle(), title: 'Importance historique' },
         showlegend: true, legend: { orientation: 'h', y: -0.15, font: { size: 10 } }
     }, { responsive: true });
 }
 
 function renderHistoricalCards() {
     const container = document.getElementById('historicalCards');
+    if (!container) return;
     container.innerHTML = displayedBooks.map(livre => {
         const m = metrics[livre];
-        return `
-            <div class="academic-card" style="border-left:5px solid ${m.color};">
-                <h4 style="color:${m.color}; text-align:center;">${m.icon} ${livre}</h4>
-                <div style="color:var(--texte-gris);">
-                    <strong style="color:var(--bleu-fonce);">Période:</strong> ${m.periode_redaction}<br>
-                    <strong style="color:var(--bleu-fonce);">Couverture:</strong> ${m.periode_couverture}<br>
-                    <strong style="color:var(--bleu-fonce);">Contexte:</strong> ${m.contextes_historiques.slice(0, 2).join(', ')}
-                </div>
-                <div style="margin-top:1rem;">
-                    <strong style="color:var(--bleu-fonce);">Manuscrits:</strong><br>
-                    <span style="color:var(--texte-gris);">${m.manuscrits_anciens.slice(0, 2).join(', ')}</span>
-                </div>
+        return `<div class="academic-card" style="border-left:5px solid ${m.color};">
+            <h4 style="color:${m.color}; text-align:center;">${m.icon} ${livre}</h4>
+            <div style="color:var(--texte-gris);">
+                <strong style="color:var(--bleu-fonce);">Période:</strong> ${m.periode_redaction}<br>
+                <strong style="color:var(--bleu-fonce);">Couverture:</strong> ${m.periode_couverture}<br>
+                <strong style="color:var(--bleu-fonce);">Contexte:</strong> ${m.contextes_historiques.slice(0, 2).join(', ')}
             </div>
-        `;
+            <div style="margin-top:1rem;">
+                <strong style="color:var(--bleu-fonce);">Manuscrits:</strong><br>
+                <span style="color:var(--texte-gris);">${m.manuscrits_anciens.slice(0, 2).join(', ')}</span>
+            </div>
+        </div>`;
     }).join('');
 }
 
-function renderHeatmap() {
-    const livres = displayedBooks;
-    const metricsKeys = ['versets', 'mots_uniques', 'chapitres', 'complexite_linguistique', 'influence_historique', 'coherence_interne'];
-    const metricsLabels = ['Versets', 'Mots uniques', 'Chapitres', 'Complexité', 'Influence', 'Cohérence'];
-
-    // Matrice de corrélation
-    const matrix = [];
-    for (let i = 0; i < metricsKeys.length; i++) {
-        const row = [];
-        for (let j = 0; j < metricsKeys.length; j++) {
-            const x = livres.map(l => metrics[l][metricsKeys[i]]);
-            const y = livres.map(l => metrics[l][metricsKeys[j]]);
-            row.push(pearsonCorrelation(x, y));
-        }
-        matrix.push(row);
-    }
-
-    Plotly.newPlot('chartHeatmap', [{
-        z: matrix, x: metricsLabels, y: metricsLabels,
-        type: 'heatmap',
-        colorscale: [[0, PALETTE.bleuFrance], [0.5, PALETTE.blanc], [1, PALETTE.rougeFrance]],
-        zmin: -1, zmax: 1,
-        text: matrix.map(row => row.map(v => v.toFixed(2))),
-        texttemplate: '%{text}',
-        textfont: { size: 10, color: 'black' },
-        hovertemplate: '%{y} vs %{x}<br>Corrélation: %{z:.3f}<extra></extra>'
-    }], {
-        ...chartConfig, height: 450,
-        title: { text: 'Matrice de Corrélation (Pearson)', font: { size: 14, color: PALETTE.bleuFonce } }
-    }, { responsive: true });
-}
-
+/* ==================== CORRÉLATION ROBUSTE ==================== */
 function pearsonCorrelation(x, y) {
     const n = x.length;
+    if (n < 2) return 0;
     const mx = x.reduce((a, b) => a + b, 0) / n;
     const my = y.reduce((a, b) => a + b, 0) / n;
     let num = 0, dx = 0, dy = 0;
     for (let i = 0; i < n; i++) {
-        num += (x[i] - mx) * (y[i] - my);
-        dx += (x[i] - mx) ** 2;
-        dy += (y[i] - my) ** 2;
+        const a = x[i] - mx;
+        const b = y[i] - my;
+        num += a * b;
+        dx += a * a;
+        dy += b * b;
     }
-    return num / Math.sqrt(dx * dy);
+    const den = Math.sqrt(dx * dy);
+    if (den === 0 || !isFinite(den)) return 0;
+    return num / den;
+}
+
+function renderHeatmap() {
+    if (!ensureData()) return;
+    const livres = displayedBooks;
+    const metricsKeys = ['versets', 'mots_uniques', 'chapitres', 'complexite_linguistique', 'influence_historique', 'coherence_interne'];
+    const metricsLabels = ['Versets', 'Mots uniques', 'Chapitres', 'Complexité', 'Influence', 'Cohérence'];
+
+    if (livres.length < 3) {
+        showEmptyMessage('chartHeatmap', 'Sélectionnez au moins 3 livres pour calculer les corrélations.');
+        return;
+    }
+
+    const matrix = [];
+    const textMatrix = [];
+
+    for (let i = 0; i < metricsKeys.length; i++) {
+        const row = [];
+        const textRow = [];
+        for (let j = 0; j < metricsKeys.length; j++) {
+            const x = livres.map(l => Number(metrics[l][metricsKeys[i]]) || 0);
+            const y = livres.map(l => Number(metrics[l][metricsKeys[j]]) || 0);
+            const corr = pearsonCorrelation(x, y);
+            const safeCorr = isNaN(corr) || !isFinite(corr) ? 0 : corr;
+            row.push(safeCorr);
+            textRow.push(safeCorr.toFixed(2));
+        }
+        matrix.push(row);
+        textMatrix.push(textRow);
+    }
+
+    const c = getChartColors();
+    const isDark = document.body.classList.contains('dark-mode');
+
+    const data = [{
+        z: matrix,
+        x: metricsLabels,
+        y: metricsLabels,
+        type: 'heatmap',
+        colorscale: [
+            [0.0, '#003366'],
+            [0.25, '#4A90D9'],
+            [0.5, isDark ? '#21262D' : '#FFFFFF'],
+            [0.75, '#F47C74'],
+            [1.0, '#EF4135']
+        ],
+        zmin: -1, zmax: 1,
+        text: textMatrix,
+        texttemplate: '%{text}',
+        textfont: { size: 13, color: isDark ? '#FFFFFF' : '#000000', family: 'Inter, sans-serif' },
+        hovertemplate: '<b>%{y}</b> ↔ <b>%{x}</b><br>Corrélation : %{z:.3f}<extra></extra>',
+        colorbar: {
+            title: { text: 'r', side: 'right', font: { color: c.text, size: 12 } },
+            tickfont: { color: c.text, size: 11 },
+            thickness: 18, len: 0.85
+        }
+    }];
+
+    Plotly.newPlot('chartHeatmap', data, {
+        paper_bgcolor: c.paper,
+        plot_bgcolor: c.plot,
+        font: { color: c.text, size: 12, family: 'Inter, sans-serif' },
+        margin: { l: 110, r: 80, t: 60, b: 100 },
+        height: 500,
+        title: { text: 'Matrice de Corrélation (Pearson)', font: { size: 15, color: c.title } },
+        xaxis: { tickfont: { color: c.text, size: 11 }, side: 'bottom', tickangle: -30 },
+        yaxis: { tickfont: { color: c.text, size: 11 }, autorange: 'reversed' }
+    }, { responsive: true, displayModeBar: false });
 }
 
 function renderCorrelation() {
     renderHeatmap();
 }
 
+/* ==================== RÉGRESSION ROBUSTE ==================== */
 function renderRegression() {
-    const x = displayedBooks.map(l => metrics[l].complexite_linguistique);
-    const y = displayedBooks.map(l => metrics[l].influence_historique);
+    if (!ensureData()) return;
+    const x = displayedBooks.map(l => Number(metrics[l].complexite_linguistique) || 0);
+    const y = displayedBooks.map(l => Number(metrics[l].influence_historique) || 0);
     const colors = displayedBooks.map(l => metrics[l].color);
 
-    // Régression linéaire simple
+    if (x.length < 2) {
+        showEmptyMessage('chartRegression', 'Au moins 2 livres requis pour calculer une régression.');
+        return;
+    }
+
     const n = x.length;
     const mx = x.reduce((a, b) => a + b, 0) / n;
     const my = y.reduce((a, b) => a + b, 0) / n;
+
     let num = 0, den = 0;
     for (let i = 0; i < n; i++) {
         num += (x[i] - mx) * (y[i] - my);
         den += (x[i] - mx) ** 2;
     }
-    const slope = num / den;
+    const slope = den === 0 ? 0 : num / den;
     const intercept = my - slope * mx;
 
-    const xLine = [Math.min(...x) - 0.2, Math.max(...x) + 0.2];
+    const xMin = Math.min(...x) - 0.2;
+    const xMax = Math.max(...x) + 0.2;
+    const xLine = [xMin, xMax];
     const yLine = xLine.map(v => slope * v + intercept);
 
-    Plotly.newPlot('chartRegression', [
-        {
-            x: xLine, y: yLine, mode: 'lines', name: 'Régression',
-            line: { color: PALETTE.rougeFrance, width: 2, dash: 'dash' }
-        },
+    const r = pearsonCorrelation(x, y);
+    const r2 = isNaN(r) ? 0 : (r * r).toFixed(3);
+    const c = getChartColors();
+
+    const traces = [
+        { x: xLine, y: yLine, mode: 'lines', name: 'Régression', line: { color: PALETTE.rougeFrance, width: 2.5, dash: 'dash' }, hoverinfo: 'skip' },
         {
             x, y, mode: 'markers+text', type: 'scatter',
-            marker: { size: 22, color: colors, line: { color: PALETTE.blanc, width: 2 } },
+            marker: { size: 22, color: colors, line: { color: '#FFFFFF', width: 2 } },
             text: displayedBooks, textposition: 'top center',
-            textfont: { size: 10, color: PALETTE.texteNoir },
-            name: 'Livres', showlegend: false
+            textfont: { size: 10, color: c.text, weight: 'bold' },
+            name: 'Livres',
+            hovertemplate: '<b>%{text}</b><br>Complexité : %{x}<br>Influence : %{y}<extra></extra>'
         }
-    ], {
-        ...chartConfig, height: 400,
-        title: { text: `Complexité → Influence (R² = ${(pearsonCorrelation(x, y) ** 2).toFixed(3)})`, font: { size: 13, color: PALETTE.bleuFonce } },
-        xaxis: { ...axisStyle, title: 'Complexité linguistique' },
-        yaxis: { ...axisStyle, title: 'Influence historique' },
-        showlegend: true
+    ];
+
+    Plotly.newPlot('chartRegression', traces, {
+        paper_bgcolor: c.paper, plot_bgcolor: c.plot,
+        font: { color: c.text, size: 12, family: 'Inter, sans-serif' },
+        margin: { l: 60, r: 30, t: 60, b: 60 }, height: 420,
+        title: { text: `Complexité → Influence (R² = ${r2})`, font: { size: 14, color: c.title } },
+        xaxis: { title: 'Complexité linguistique', tickfont: { color: c.text }, titlefont: { color: c.title }, gridcolor: c.grid },
+        yaxis: { title: 'Influence historique', tickfont: { color: c.text }, titlefont: { color: c.title }, gridcolor: c.grid },
+        showlegend: true, legend: { orientation: 'h', y: -0.2, font: { color: c.text, size: 11 } }
     }, { responsive: true });
 }
 
+/* ==================== ACP ROBUSTE ==================== */
 function renderPCA() {
-    // ACP simplifiée : projeter versets vs mots_uniques
+    if (!ensureData()) return;
+
+    if (displayedBooks.length < 2) {
+        showEmptyMessage('chartPCA', 'Au moins 2 livres requis pour l\'ACP.');
+        return;
+    }
+
+    const c = getChartColors();
+
     const traces = [{
-        x: displayedBooks.map(l => Math.log10(metrics[l].versets)),
-        y: displayedBooks.map(l => Math.log10(metrics[l].mots_uniques)),
-        mode: 'markers+text',
-        type: 'scatter',
+        x: displayedBooks.map(l => Math.log10(metrics[l].versets || 1)),
+        y: displayedBooks.map(l => Math.log10(metrics[l].mots_uniques || 1)),
+        mode: 'markers+text', type: 'scatter',
         marker: {
-            size: displayedBooks.map(l => metrics[l].chapitres / 20 + 15),
+            size: displayedBooks.map(l => (metrics[l].chapitres || 1) / 20 + 15),
             color: displayedBooks.map(l => metrics[l].color),
-            line: { color: PALETTE.blanc, width: 2 },
-            opacity: 0.85
+            line: { color: '#FFFFFF', width: 2 }, opacity: 0.85
         },
-        text: displayedBooks,
-        textposition: 'top center',
-        textfont: { size: 10, color: PALETTE.texteNoir, weight: 'bold' }
+        text: displayedBooks, textposition: 'top center',
+        textfont: { size: 10, color: c.text, weight: 'bold' },
+        hovertemplate: '<b>%{text}</b><br>log₁₀(Versets) : %{x:.2f}<br>log₁₀(Mots) : %{y:.2f}<extra></extra>'
     }];
 
     Plotly.newPlot('chartPCA', traces, {
-        ...chartConfig, height: 400,
-        title: { text: 'ACP — Projection (log versets vs log mots uniques)', font: { size: 13, color: PALETTE.bleuFonce } },
-        xaxis: { ...axisStyle, title: 'log10(Versets)' },
-        yaxis: { ...axisStyle, title: 'log10(Mots uniques)' },
+        paper_bgcolor: c.paper, plot_bgcolor: c.plot,
+        font: { color: c.text, size: 12, family: 'Inter, sans-serif' },
+        margin: { l: 60, r: 30, t: 60, b: 60 }, height: 420,
+        title: { text: 'ACP — Projection (log versets vs log mots uniques)', font: { size: 14, color: c.title } },
+        xaxis: { title: 'log₁₀(Versets)', tickfont: { color: c.text }, titlefont: { color: c.title }, gridcolor: c.grid },
+        yaxis: { title: 'log₁₀(Mots uniques)', tickfont: { color: c.text }, titlefont: { color: c.title }, gridcolor: c.grid },
         showlegend: false
     }, { responsive: true });
 }
 
+/* ==================== GRAPHIQUES TAB 4 ==================== */
 function renderGeoMap() {
+    if (!ensureData()) return;
     const traces = [];
     for (const livre of displayedBooks) {
         const data = geoExtended[livre];
         if (!data) continue;
         traces.push({
             type: 'scattergeo',
-            lat: data.centres.map(c => c.coords[0]),
-            lon: data.centres.map(c => c.coords[1]),
+            lat: data.centres.map(c => c.coords[0]), lon: data.centres.map(c => c.coords[1]),
             mode: 'markers+text',
-            marker: { size: 11, color: data.color, line: { color: PALETTE.blanc, width: 2 } },
-            text: data.centres.map(c => c.name),
-            textposition: 'top center',
-            textfont: { size: 8, color: PALETTE.texteNoir },
+            marker: { size: 11, color: data.color, line: { color: '#FFFFFF', width: 2 } },
+            text: data.centres.map(c => c.name), textposition: 'top center',
+            textfont: { size: 8, color: getChartColors().text },
             name: `${livre} - Centres`,
-            hovertext: data.centres.map(c => `<b>${c.name}</b><br>${livre}`),
-            hoverinfo: 'text'
+            hovertext: data.centres.map(c => `<b>${c.name}</b><br>${livre}`), hoverinfo: 'text'
         });
         traces.push({
             type: 'scattergeo',
-            lat: data.regions.map(r => r.coords[0]),
-            lon: data.regions.map(r => r.coords[1]),
+            lat: data.regions.map(r => r.coords[0]), lon: data.regions.map(r => r.coords[1]),
             mode: 'markers',
             marker: { size: 18, color: data.color, opacity: 0.4 },
-            text: data.regions.map(r => r.name),
-            name: `${livre} - Régions`,
-            hovertext: data.regions.map(r => `<b>${r.name}</b><br>${livre}`),
-            hoverinfo: 'text'
+            text: data.regions.map(r => r.name), name: `${livre} - Régions`,
+            hovertext: data.regions.map(r => `<b>${r.name}</b><br>${livre}`), hoverinfo: 'text'
         });
         data.routes.forEach(route => {
             traces.push({
                 type: 'scattergeo',
-                lat: route.coords.map(c => c[0]),
-                lon: route.coords.map(c => c[1]),
-                mode: 'lines',
-                line: { width: 2.5, color: data.color },
-                name: `${livre} - ${route.name}`,
-                hovertext: route.name, hoverinfo: 'text'
+                lat: route.coords.map(c => c[0]), lon: route.coords.map(c => c[1]),
+                mode: 'lines', line: { width: 2.5, color: data.color },
+                name: `${livre} - ${route.name}`, hovertext: route.name, hoverinfo: 'text'
             });
         });
     }
 
+    const isDark = document.body.classList.contains('dark-mode');
     Plotly.newPlot('chartGeoMap', traces, {
-        ...chartConfig,
+        ...getChartConfig(),
         geo: {
             scope: 'world', projection: { type: 'natural earth' },
             center: { lat: 30, lon: 55 }, showland: true,
-            landcolor: PALETTE.grisClair, countrycolor: PALETTE.blanc,
+            landcolor: isDark ? '#21262D' : '#E8ECF1',
+            countrycolor: isDark ? '#30363D' : '#FFFFFF',
             coastlinecolor: PALETTE.bleuClair, showocean: true,
-            oceancolor: PALETTE.bleuTresClair, showlakes: true,
-            lakecolor: PALETTE.blanc, resolution: 50
+            oceancolor: isDark ? '#0A1A2F' : '#E6F0FA',
+            showlakes: true, lakecolor: isDark ? '#161B22' : '#FFFFFF',
+            resolution: 50
         },
-        title: { text: 'Cartographie des Aires Culturelles', font: { size: 16, color: PALETTE.bleuFonce } },
+        title: { text: 'Cartographie des Aires Culturelles', font: { size: 16, color: getChartColors().title } },
         height: 600, showlegend: true,
         legend: { orientation: 'h', y: -0.08, font: { size: 9 } }
     }, { responsive: true });
 }
 
 function renderGeoInfluence() {
+    if (!ensureData()) return;
     const traces = displayedBooks.map(livre => ({
         x: [geographicalData[livre].regions.length],
         y: [geographicalData[livre].influence_geographique],
@@ -2113,7 +1479,7 @@ function renderGeoInfluence() {
         marker: {
             size: geographicalData[livre].centres_culturels.length * 15 + 30,
             color: metrics[livre].color, opacity: 0.8,
-            line: { color: PALETTE.blanc, width: 3 }
+            line: { color: '#FFFFFF', width: 3 }
         },
         text: [livre], textposition: 'middle center',
         textfont: { color: 'white', size: 11, weight: 'bold' },
@@ -2121,16 +1487,17 @@ function renderGeoInfluence() {
     }));
 
     Plotly.newPlot('chartGeoInfluence', traces, {
-        ...chartConfig, height: 400,
-        title: { text: 'Influence Géographique', font: { size: 13, color: PALETTE.bleuFonce } },
-        xaxis: { ...axisStyle, title: 'Nb régions' },
-        yaxis: { ...axisStyle, title: 'Influence (/10)' },
+        ...getChartConfig(), height: 400,
+        title: { text: 'Influence Géographique', font: { size: 13, color: getChartColors().title } },
+        xaxis: { ...getAxisStyle(), title: 'Nb régions' },
+        yaxis: { ...getAxisStyle(), title: 'Influence (/10)' },
         showlegend: false
     }, { responsive: true });
 }
 
 function renderGeoDetailsTabs() {
     const container = document.getElementById('geoDetailsTabs');
+    if (!container) return;
     const livres = displayedBooks;
 
     let html = '<div class="inner-tabs">';
@@ -2142,27 +1509,25 @@ function renderGeoDetailsTabs() {
     livres.forEach((livre, i) => {
         const d = geographicalData[livre];
         const c = metrics[livre].color;
-        html += `
-            <div class="inner-tab-content ${i === 0 ? 'active' : ''}" id="geo-${i}">
-                <div style="background:linear-gradient(to right, ${c}25, ${c}05); padding:1rem; border-radius:10px; border-left:5px solid ${c}; margin-bottom:1rem;">
-                    <div style="color:${c}; font-weight:800; font-size:1.2rem;">${livre}</div>
-                    <div style="color:var(--texte-gris);">Influence: ${d.influence_geographique}/10</div>
-                </div>
-                <div class="metrics-row">
-                    <div class="metric-box"><div class="value">${d.regions.length}</div><div class="label">Régions</div></div>
-                    <div class="metric-box"><div class="value">${d.centres_culturels.length}</div><div class="label">Centres</div></div>
-                    <div class="metric-box"><div class="value">${d.routes_commerciales.length}</div><div class="label">Routes</div></div>
-                </div>
-                <div class="info-block"><div class="info-title" style="color:${c};">Régions :</div>
-                    <div style="color:var(--texte-gris);">${d.regions.join(', ')}</div></div>
-                <div class="info-block" style="border-left-color:${PALETTE.rougeFrance};">
-                    <div class="info-title" style="color:${PALETTE.rougeFrance};">Centres culturels :</div>
-                    <div style="color:var(--texte-gris);">${d.centres_culturels.join(', ')}</div></div>
-                <div class="info-block" style="border-left-color:${PALETTE.bleuClair};">
-                    <div class="info-title" style="color:${PALETTE.bleuClair};">Routes :</div>
-                    <div style="color:var(--texte-gris);">${d.routes_commerciales.join(', ')}</div></div>
+        html += `<div class="inner-tab-content ${i === 0 ? 'active' : ''}" id="geo-${i}">
+            <div style="background:linear-gradient(to right, ${c}25, ${c}05); padding:1rem; border-radius:10px; border-left:5px solid ${c}; margin-bottom:1rem;">
+                <div style="color:${c}; font-weight:800; font-size:1.2rem;">${livre}</div>
+                <div style="color:var(--texte-gris);">Influence: ${d.influence_geographique}/10</div>
             </div>
-        `;
+            <div class="metrics-row">
+                <div class="metric-box"><div class="value">${d.regions.length}</div><div class="label">Régions</div></div>
+                <div class="metric-box"><div class="value">${d.centres_culturels.length}</div><div class="label">Centres</div></div>
+                <div class="metric-box"><div class="value">${d.routes_commerciales.length}</div><div class="label">Routes</div></div>
+            </div>
+            <div class="info-block"><div class="info-title" style="color:${c};">Régions :</div>
+                <div style="color:var(--texte-gris);">${d.regions.join(', ')}</div></div>
+            <div class="info-block" style="border-left-color:${PALETTE.rougeFrance};">
+                <div class="info-title" style="color:${PALETTE.rougeFrance};">Centres culturels :</div>
+                <div style="color:var(--texte-gris);">${d.centres_culturels.join(', ')}</div></div>
+            <div class="info-block" style="border-left-color:${PALETTE.bleuClair};">
+                <div class="info-title" style="color:${PALETTE.bleuClair};">Routes :</div>
+                <div style="color:var(--texte-gris);">${d.routes_commerciales.join(', ')}</div></div>
+        </div>`;
     });
     container.innerHTML = html;
 }
@@ -2170,15 +1535,10 @@ function renderGeoDetailsTabs() {
 /* ==================== RECHERCHE ==================== */
 function performSearch(query) {
     const results = document.getElementById('searchResults');
-    if (!query || query.length < 2) {
-        results.classList.remove('active');
-        return;
-    }
+    if (!query || query.length < 2) { results.classList.remove('active'); return; }
     const q = query.toLowerCase();
     const matches = versesDB.filter(v =>
-        v.texte.toLowerCase().includes(q) ||
-        v.ref.toLowerCase().includes(q) ||
-        v.livre.toLowerCase().includes(q)
+        v.texte.toLowerCase().includes(q) || v.ref.toLowerCase().includes(q) || v.livre.toLowerCase().includes(q)
     ).slice(0, 8);
 
     if (matches.length === 0) {
@@ -2209,18 +1569,11 @@ document.addEventListener('click', (e) => {
 });
 
 /* ==================== FILTRES ==================== */
-function updatePeriodFilter(value) {
-    document.getElementById('periodValue').textContent = `${value} → 700`;
-}
-
-function updateThemeFilter(theme) {
-    showToast(theme === 'all' ? '🎯 Tous les thèmes affichés' : `🎯 Thème : ${theme}`);
-}
+function updatePeriodFilter(value) { document.getElementById('periodValue').textContent = `${value} → 700`; }
+function updateThemeFilter(theme) { showToast(theme === 'all' ? '🎯 Tous les thèmes affichés' : `🎯 Thème : ${theme}`); }
 
 function updateBookCount(value) {
-    displayedBooks = value === '3'
-        ? ['TORAH', 'BIBLE', 'CORAN']
-        : ['TORAH', 'BIBLE', 'CORAN', 'VEDAS', 'TRIPITAKA', 'AVESTA'];
+    displayedBooks = value === '3' ? ['TORAH', 'BIBLE', 'CORAN'] : ['TORAH', 'BIBLE', 'CORAN', 'VEDAS', 'TRIPITAKA', 'AVESTA'];
     refreshAllCharts();
     showToast(`📚 ${displayedBooks.length} livres affichés`);
 }
@@ -2276,10 +1629,7 @@ function answerQuiz(answer, btn) {
     document.getElementById('quizScore').textContent = `Score : ${quizScore} / ${quizAnswered}`;
 }
 
-function nextQuiz() {
-    quizIndex++;
-    renderQuiz();
-}
+function nextQuiz() { quizIndex++; renderQuiz(); }
 
 /* ==================== DARK MODE ==================== */
 function toggleDarkMode() {
@@ -2310,13 +1660,12 @@ function exportHTML() {
     let html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Rapport Livres Sacrés</title>
     <style>body{font-family:Arial;margin:20px;background:#F7F8FA;color:#1A1A1A;}
     h1{color:#0055A4;border-bottom:3px solid #EF4135;padding-bottom:10px;}
-    h2{color:#0055A4;border-left:5px solid #EF4135;padding-left:10px;}
-    .m{margin:10px 0;padding:15px;border-left:5px solid #0055A4;background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+    .m{margin:10px 0;padding:15px;border-left:5px solid #0055A4;background:#fff;border-radius:8px;}
     table{border-collapse:collapse;width:100%;margin:20px 0;background:#fff;border-radius:8px;overflow:hidden;}
     th,td{border:1px solid #E8ECF1;padding:10px;text-align:left;}
     th{background:#0055A4;color:white;}</style></head><body>
     <h1>ANALYSE SCIENTIFIQUE AVANCÉE DES LIVRES SACRÉS</h1>
-    <p>Généré le : ${new Date().toLocaleString('fr-FR')}</p><h2>Métriques principales</h2>`;
+    <p>Généré le : ${new Date().toLocaleString('fr-FR')}</p>`;
 
     for (const livre of displayedBooks) {
         const d = metrics[livre];
@@ -2362,8 +1711,7 @@ async function exportPDF() {
         const pdfW = pdf.internal.pageSize.getWidth();
         const pdfH = pdf.internal.pageSize.getHeight();
         const imgH = (canvas.height * pdfW) / canvas.width;
-        let heightLeft = imgH;
-        let position = 0;
+        let heightLeft = imgH, position = 0;
         pdf.addImage(imgData, 'PNG', 0, position, pdfW, imgH);
         heightLeft -= pdfH;
         while (heightLeft > 0) {
@@ -2398,13 +1746,21 @@ function setupMainTabs() {
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             btn.classList.add('active');
             document.getElementById(btn.dataset.tab).classList.add('active');
-            setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
-            // Re-render charts de l'onglet actif
+
+            setTimeout(() => window.dispatchEvent(new Event('resize')), 150);
+
             const tab = btn.dataset.tab;
             if (tab === 'tab2') { renderLinguistic(); renderTTR(); renderLanguageTabs(); }
-            else if (tab === 'tab3') { renderHistoricalTimeline(); renderHeatmap(); }
+            else if (tab === 'tab3') { renderHistoricalTimeline(); renderHistoricalCards(); renderHeatmap(); }
             else if (tab === 'tab4') { renderGeoMap(); renderGeoInfluence(); renderGeoDetailsTabs(); }
-            else if (tab === 'tab5') { renderCorrelation(); renderRegression(); renderPCA(); }
+            else if (tab === 'tab5') {
+                setTimeout(() => {
+                    renderHeatmap();
+                    renderCorrelation();
+                    renderRegression();
+                    renderPCA();
+                }, 100);
+            }
         });
     });
 }
@@ -2416,7 +1772,6 @@ window.addEventListener('scroll', () => {
 
 /* ==================== INITIALISATION ==================== */
 function init() {
-    // Thème sauvegardé
     if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
         document.getElementById('themeBtn').textContent = '☀️ Mode clair';
