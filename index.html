@@ -149,9 +149,7 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
 
 .search-results {
     position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
+    top: 100%; left: 0; right: 0;
     background: var(--blanc);
     border-radius: 12px;
     box-shadow: var(--shadow-lg);
@@ -261,8 +259,23 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.3px; }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
 
-.chart-container { background: var(--blanc); border-radius: 12px; padding: 1.25rem; box-shadow: var(--shadow-sm); border: 1px solid var(--gris-clair); transition: box-shadow 0.25s; min-height: 400px; }
+.chart-container {
+    background: var(--blanc);
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gris-clair);
+    transition: box-shadow 0.25s;
+    min-height: 400px;
+}
+
 .chart-container:hover { box-shadow: var(--shadow-md); }
+
+/* ✅ CONTENEUR HEATMAP — dimensions garanties */
+#chartHeatmap {
+    min-height: 500px;
+    width: 100%;
+}
 
 .inner-tabs { display: flex; gap: 4px; margin-bottom: 1rem; flex-wrap: wrap; }
 
@@ -494,7 +507,6 @@ button:focus-visible, select:focus-visible, input:focus-visible {
     outline-offset: 2px;
 }
 
-/* Placeholder pour graphiques vides */
 .empty-chart-message {
     display: flex;
     flex-direction: column;
@@ -554,7 +566,7 @@ button:focus-visible, select:focus-visible, input:focus-visible {
             <button class="tab-btn" data-tab="tab7">💾 Export & Méthodo</button>
         </div>
 
-        <!-- TAB 1 -->
+        <!-- ==================== TAB 1 : ANALYSE COMPARÉE ==================== -->
         <div class="tab-content active" id="tab1">
             <h3 class="section-title">📊 ANALYSE COMPARATIVE MULTIDIMENSIONNELLE</h3>
             <div class="progress-tricolore"><div class="bleu"></div><div class="blanc"></div><div class="rouge"></div></div>
@@ -596,7 +608,7 @@ button:focus-visible, select:focus-visible, input:focus-visible {
             </div>
         </div>
 
-        <!-- TAB 2 -->
+        <!-- ==================== TAB 2 : LINGUISTIQUE ==================== -->
         <div class="tab-content" id="tab2">
             <h3 class="section-title">🔤 ANALYSE LINGUISTIQUE APPROFONDIE</h3>
             <div class="progress-tricolore"><div class="bleu"></div><div class="blanc"></div><div class="rouge"></div></div>
@@ -610,20 +622,17 @@ button:focus-visible, select:focus-visible, input:focus-visible {
             </div>
         </div>
 
-        <!-- TAB 3 -->
+        <!-- ==================== TAB 3 : HISTOIRE ==================== -->
         <div class="tab-content" id="tab3">
             <h3 class="section-title">⏳ ANALYSE HISTORIQUE ET CONTEXTUELLE</h3>
             <div class="progress-tricolore"><div class="bleu"></div><div class="blanc"></div><div class="rouge"></div></div>
             <div class="chart-container"><div id="chartHistoricalTimeline"></div></div>
             <h4 class="subsection-title">🏛️ Contextes Historiques des Textes</h4>
             <div class="grid-3" id="historicalCards"></div>
-            <div class="chart-container" style="margin-top:1.5rem;">
-                <h4 class="subsection-title">📊 Corrélations (Heatmap)</h4>
-                <div id="chartHeatmap"></div>
-            </div>
+            <!-- ✅ La heatmap a été retirée d'ici (elle est maintenant dans l'onglet Statistiques) -->
         </div>
 
-        <!-- TAB 4 -->
+        <!-- ==================== TAB 4 : GÉOGRAPHIE ==================== -->
         <div class="tab-content" id="tab4">
             <h3 class="section-title">🌍 ANALYSE GÉOGRAPHIQUE ET CULTURELLE</h3>
             <div class="progress-tricolore"><div class="bleu"></div><div class="blanc"></div><div class="rouge"></div></div>
@@ -646,14 +655,15 @@ button:focus-visible, select:focus-visible, input:focus-visible {
             </div>
         </div>
 
-        <!-- TAB 5 : STATISTIQUES (CORRIGÉ) -->
+        <!-- ==================== TAB 5 : STATISTIQUES (CORRIGÉ) ==================== -->
         <div class="tab-content" id="tab5">
             <h3 class="section-title">📈 ANALYSE STATISTIQUE AVANCÉE</h3>
             <div class="progress-tricolore"><div class="bleu"></div><div class="blanc"></div><div class="rouge"></div></div>
 
             <div class="grid-2">
-                <div class="chart-container">
+                <div class="chart-container" style="min-height:500px;">
                     <h4 class="subsection-title">🔗 Matrice de Corrélation</h4>
+                    <!-- ✅ ID UNIQUE — la heatmap est ICI -->
                     <div id="chartHeatmap"></div>
                 </div>
                 <div class="chart-container">
@@ -668,7 +678,7 @@ button:focus-visible, select:focus-visible, input:focus-visible {
             </div>
         </div>
 
-        <!-- TAB 6 -->
+        <!-- ==================== TAB 6 : VERSETS & QUIZ ==================== -->
         <div class="tab-content" id="tab6">
             <h3 class="section-title">🎯 VERSETS CLÉS & QUIZ INTERACTIF</h3>
             <div class="progress-tricolore"><div class="bleu"></div><div class="blanc"></div><div class="rouge"></div></div>
@@ -718,7 +728,7 @@ button:focus-visible, select:focus-visible, input:focus-visible {
             </div>
         </div>
 
-        <!-- TAB 7 -->
+        <!-- ==================== TAB 7 : EXPORT & MÉTHODO ==================== -->
         <div class="tab-content" id="tab7">
             <h3 class="section-title">💾 EXPORTATION DU RAPPORT</h3>
             <div class="progress-tricolore"><div class="bleu"></div><div class="blanc"></div><div class="rouge"></div></div>
@@ -1252,8 +1262,16 @@ function pearsonCorrelation(x, y) {
     return num / den;
 }
 
+/* ✅ HEATMAP — UNIQUE et définitive */
 function renderHeatmap() {
     if (!ensureData()) return;
+
+    const container = document.getElementById('chartHeatmap');
+    if (!container) {
+        console.warn('⚠️ #chartHeatmap introuvable');
+        return;
+    }
+
     const livres = displayedBooks;
     const metricsKeys = ['versets', 'mots_uniques', 'chapitres', 'complexite_linguistique', 'influence_historique', 'coherence_interne'];
     const metricsLabels = ['Versets', 'Mots uniques', 'Chapitres', 'Complexité', 'Influence', 'Cohérence'];
@@ -1314,14 +1332,11 @@ function renderHeatmap() {
         font: { color: c.text, size: 12, family: 'Inter, sans-serif' },
         margin: { l: 110, r: 80, t: 60, b: 100 },
         height: 500,
+        autosize: true,
         title: { text: 'Matrice de Corrélation (Pearson)', font: { size: 15, color: c.title } },
         xaxis: { tickfont: { color: c.text, size: 11 }, side: 'bottom', tickangle: -30 },
         yaxis: { tickfont: { color: c.text, size: 11 }, autorange: 'reversed' }
     }, { responsive: true, displayModeBar: false });
-}
-
-function renderCorrelation() {
-    renderHeatmap();
 }
 
 /* ==================== RÉGRESSION ROBUSTE ==================== */
@@ -1588,13 +1603,11 @@ function refreshAllCharts() {
     renderTTR();
     renderHistoricalTimeline();
     renderHistoricalCards();
-    renderHeatmap();
-    renderRegression();
-    renderPCA();
     renderGeoMap();
     renderGeoInfluence();
     renderLanguageTabs();
     renderGeoDetailsTabs();
+    // ✅ Ne pas rendre la heatmap/régression/PCA ici (uniquement à l'ouverture de tab5)
 }
 
 /* ==================== QUIZ ==================== */
@@ -1638,6 +1651,12 @@ function toggleDarkMode() {
     document.getElementById('themeBtn').textContent = isDark ? i18n[currentLang].lightMode : i18n[currentLang].darkMode;
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
     refreshAllCharts();
+    // ✅ Re-render heatmap si l'onglet Stats est actif
+    if (document.getElementById('tab5')?.classList.contains('active')) {
+        renderHeatmap();
+        renderRegression();
+        renderPCA();
+    }
     showToast(isDark ? '🌙 Mode sombre activé' : '☀️ Mode clair activé');
 }
 
@@ -1747,20 +1766,34 @@ function setupMainTabs() {
             btn.classList.add('active');
             document.getElementById(btn.dataset.tab).classList.add('active');
 
-            setTimeout(() => window.dispatchEvent(new Event('resize')), 150);
-
             const tab = btn.dataset.tab;
-            if (tab === 'tab2') { renderLinguistic(); renderTTR(); renderLanguageTabs(); }
-            else if (tab === 'tab3') { renderHistoricalTimeline(); renderHistoricalCards(); renderHeatmap(); }
-            else if (tab === 'tab4') { renderGeoMap(); renderGeoInfluence(); renderGeoDetailsTabs(); }
-            else if (tab === 'tab5') {
-                setTimeout(() => {
+
+            // ✅ Délai pour laisser le conteneur prendre sa taille
+            setTimeout(() => {
+                window.dispatchEvent(new Event('resize'));
+
+                if (tab === 'tab1') {
+                    renderTextMetrics(); renderRadar();
+                    renderConsistency(); renderTimeline();
+                }
+                else if (tab === 'tab2') {
+                    renderLinguistic(); renderTTR(); renderLanguageTabs();
+                }
+                else if (tab === 'tab3') {
+                    renderHistoricalTimeline(); renderHistoricalCards();
+                }
+                else if (tab === 'tab4') {
+                    renderGeoMap(); renderGeoInfluence(); renderGeoDetailsTabs();
+                }
+                else if (tab === 'tab5') {
+                    // ✅ RENDU FORCÉ de la heatmap + autres graphiques stats
+                    console.log('📊 Rendu des statistiques...');
                     renderHeatmap();
-                    renderCorrelation();
                     renderRegression();
                     renderPCA();
-                }, 100);
-            }
+                    console.log('✅ Statistiques rendues');
+                }
+            }, 250);
         });
     });
 }
@@ -1779,23 +1812,25 @@ function init() {
 
     renderMetrics();
     setupMainTabs();
+
+    // ✅ Rendu des onglets visibles au démarrage (tab1 actif)
     renderTextMetrics();
     renderRadar();
     renderConsistency();
     renderTimeline();
+
     renderLinguistic();
     renderTTR();
     renderLanguageTabs();
     renderHistoricalTimeline();
     renderHistoricalCards();
-    renderHeatmap();
-    renderCorrelation();
-    renderRegression();
-    renderPCA();
     renderGeoMap();
     renderGeoInfluence();
     renderGeoDetailsTabs();
     renderQuiz();
+
+    // ⚠️ IMPORTANT : NE PAS rendre la heatmap au chargement
+    // (elle sera rendue automatiquement quand l'utilisateur cliquera sur l'onglet Statistiques)
 
     setTimeout(() => showToast('🎉 Dashboard chargé — 6 traditions, 12 axes d\'analyse'), 800);
 }
